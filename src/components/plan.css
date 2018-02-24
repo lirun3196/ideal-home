@@ -1,0 +1,164 @@
+body{
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+}
+.app{
+    transition: transform 0.5s ease;
+}
+.nav-wrap{
+    display: inline-flex;
+    flex-flow: column wrap;
+    border: 1px solid #e2e2e2;    
+    min-height: 300px;
+    max-width: 500px;
+    width: 95%;
+    opacity: 0.85;
+    transition: all 0.8s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    transform: translate3d(0,1550px,-1999px) rotateX(90deg);
+    /* margin: 60px auto 0; */
+}
+.nav-wrap div{
+    background-color: #dd7e6b;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #e2e2e2;
+    box-sizing: border-box;
+}
+.nav-wrap .flex-wrap{
+    border: none;
+}
+.flex-wrap a{
+    text-decoration-line: underline;
+}
+.flex-wrap a:hover{
+    color: #c7c6c6;
+    text-decoration-line: underline;
+}
+.flex-wrap a:visited{
+    color: #fff;
+    text-decoration-line: none;
+}
+.nav-wrap .air-space{
+    background-color: #fff;
+    cursor: not-allowed;
+}
+.jobs .background{
+    background-image: url('./plan-img/header-Jobs.jpg');
+}
+.birds-view{
+    perspective: 800px;
+}
+.birds-view .background{
+    background-image: url('./plan-img/view_w1920.jpg');
+}
+@keyframes show{
+    0% {
+        transform: translate3d(0,1550px,-13999px) rotateX(90deg);
+    }
+    25% {
+        transform: translate3d(0,750px,-13999px) rotateX(80deg);
+    }
+    50% {
+        transform: translate3d(0,450px,-10999px) rotateX(70deg);
+    }
+    75% {
+        transform: translate3d(0,150px,-4999px) rotateX(30deg);
+    }
+    100% {
+        transform: translate3d(0,0,0) rotateX(0deg);
+    }
+}
+.birds-view.show .nav-wrap{
+    animation: show 0.8s 1 forwards linear;
+}
+.level1,.level2{
+    display: flex;
+}
+.level1{
+    flex: 5
+}
+.level2{
+    flex: 1
+}
+.corridor{
+    flex: 1;
+}
+.kitchen{
+    flex: 5
+}
+.live-balcony{
+    flex: 3
+}
+.level2 .air-space{
+    flex: 4
+}
+.active-space-wrap{
+    display: flex;
+    flex: 2;
+    flex-flow: column wrap;
+}
+.rest-space-wrap{
+    display: flex;
+    flex-flow: column wrap;
+    flex: 3;
+}
+.bedroom-wrap, .miscellaneous-wrap{
+    display: flex
+}
+.bedroom-wrap{
+    flex: 4
+}
+.secondary-bedroom{
+    flex: 5
+}
+.main-bedroom{
+    flex: 6
+}
+.miscellaneous-wrap{
+    flex: 5;
+}
+.miscell-left{
+    display: flex;
+    flex-flow: column wrap;
+    flex: 5
+}
+.miscell-right{
+    flex: 3;
+    display: flex;
+    flex-flow: column wrap;
+}
+.yard{
+    flex: 5
+}
+.miscell-right .air-space{
+    flex: 6
+}
+.balcony-wrap{
+    display: flex;
+    flex: 1;
+}
+.balcony-wrap .air-space{
+    flex: 1
+}
+.main-balcony{
+    flex: 12
+}
+.living-room{
+    flex: 4
+}
+.dining-room{
+    flex: 3
+}
+.hallway{
+    flex: 2
+}
+.study-and-bathroom{
+    display: flex;
+    flex: 5;
+}
+.public-bathroom{
+    flex: 4
+}
+.study{
+    flex: 5
+}

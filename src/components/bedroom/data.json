@@ -1,0 +1,19 @@
+{
+    "pageTitle":"bedroom",
+    "keyWords": [
+      { "id": 1, "content": "温馨" }
+    ],
+    "listItems": [
+      {
+        "items": [
+          {
+            "id": 1,
+            "content": "床头的靠背要靠着舒服，适合看书，看手机"
+          },
+          { "id": 2, "content": "挂衣架,每个卧室都需要" }
+        ],
+        "title": "需求"
+      }
+    ]
+  }
+  
