@@ -33,5 +33,6 @@
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.0",
     "shelljs": "^0.8.1"
-  }
+  },
+  "homepage": "https://lirun3196.github.io/ideal-home"
 }
