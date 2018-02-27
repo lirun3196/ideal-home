@@ -1,10 +1,9 @@
 /**
- * fullPage-tiny, inspired by [fullPage](https://github.com/alvarotrigo/fullPage.js) and most of helpers function copy from it directly
+ * singlePage, inspired by [fullPage](https://github.com/alvarotrigo/fullPage.js) and most of helpers function copy from it directly
  * MIT licensed
  *
- * Copyright (C) 2018 liyouqi.com - A component by Rich Lee
+ * Copyright (C) 2018 by Rich Lee
  */
-
 
 let canScroll = true;
 let options;
@@ -13,41 +12,21 @@ let options;
  * @description Detecting mousewheel scrolling
  * @param {{currentTarget:Element,deltaY:number}} e
  * @param {Object} customOptions
+ * @param {function} cb
  * http://blogs.sitepointstatic.com/examples/tech/mouse-wheel/index.html
  * http://www.sitepoint.com/html5-javascript-mouse-wheel/
  */
-function initialize(e, customOptions) {
+function initialize(e, customOptions, cb) {
   const defaults = {
-    //navigation
     scrollingSpeed: 500,
-    autoScrolling: true,
+    touchSensitivity: 10,
     onLeave: null,
+    scrolling: scrolling,
     afterSectionDown: null,
     afterSectionUp: null
   };
-
   options = Object.assign({}, defaults, customOptions || {});
-
-  MouseWheelHandler(e, options);
-}
-
-function MouseWheelHandler(e, options) {
-  if (options.autoScrolling) {
-    let value = e.deltaY;
-    console.log("e-", e);
-    let delta = Math.max(-1, Math.min(1, value));
-
-    if (canScroll) {
-      //the direction of "down,up" is for page not scrollbar
-      if (delta < 0) {
-        scrolling("down", e.currentTarget, options.afterSectionDown);
-      } else {
-        scrolling("up", e.currentTarget, options.afterSectionUp);
-      }
-    }
-
-    return false;
-  }
+  cb(e, options);
 }
 
 /**
@@ -55,8 +34,8 @@ function MouseWheelHandler(e, options) {
  * by 'automatically' scrolling a section or by using the default and normal scrolling.
  */
 function scrolling(type, element, cb) {
-  console.log("type-", type);
-  if (type === "down") {
+  console.log('type-', type);
+  if (type === 'down') {
     moveSectionDown(element, cb);
   } else {
     moveSectionUp(element, cb);
@@ -108,7 +87,7 @@ function moveSectionUp(element, cb) {
 }
 
 /**
- * Simulates the animated scrollTop of jQuery. 
+ * Simulates the animated scrollTop of jQuery.
  * http://stackoverflow.com/a/16136789/1081396
  */
 var activeAnimation;
@@ -118,6 +97,7 @@ function scrollTo(element, to, duration, callback) {
     return;
   }
   canScroll = false;
+  options.canScroll = false;
   const v = {
     callback: callback,
     element: element
@@ -130,7 +110,7 @@ function scrollTo(element, to, duration, callback) {
   activeAnimation = true;
 
   var animateScroll = function() {
-    //in order to stope it from other function whenever we want    
+    //in order to stope it from other function whenever we want
     if (activeAnimation) {
       let val = to;
 
@@ -159,6 +139,7 @@ function afterSectionLoads(v, ele) {
   //   !v.localIsResizing &&
   //   options.afterLoad.call(v.element, v.anchorLink, v.sectionIndex + 1);
   canScroll = true;
+  options.canScroll = true;
 
   isFunction(v.callback) && v.callback.call(this, ele);
 }
@@ -175,18 +156,18 @@ function isFunction(functionToCheck) {
   const getType = {};
   return (
     functionToCheck &&
-    getType.toString.call(functionToCheck) === "[object Function]"
+    getType.toString.call(functionToCheck) === '[object Function]'
   );
 }
 
 // https://stackoverflow.com/questions/10787782/full-height-of-a-html-element-div-including-border-padding-and-margin
 function getAbsoluteHeight(el) {
   // Get the DOM Node if you pass in a string
-  el = typeof el === "string" ? document.querySelector(el) : el;
-  console.log("el:", el);
+  el = typeof el === 'string' ? document.querySelector(el) : el;
+  console.log('el:', el);
   let styles = window.getComputedStyle(el);
   let margin =
-    parseFloat(styles["marginTop"]) + parseFloat(styles["marginBottom"]);
+    parseFloat(styles['marginTop']) + parseFloat(styles['marginBottom']);
 
   return Math.ceil(el.offsetHeight + margin);
 }
@@ -204,4 +185,107 @@ function getRelativePosition(element) {
   return element.offsetTop;
 }
 
-export default initialize;
+function mouseWheelHandler(e, options) {
+  let value = e.deltaY;
+  let delta = Math.max(-1, Math.min(1, value));
+
+  if (canScroll) {
+    //the direction of "down,up" is for page not scrollbar
+    if (delta < 0) {
+      options.scrolling.call(
+        null,
+        'down',
+        e.currentTarget,
+        options.afterSectionDown
+      );
+    } else {
+      options.scrolling.call(
+        null,
+        'up',
+        e.currentTarget,
+        options.afterSectionUp
+      );
+    }
+  }
+
+  return false;
+}
+
+/**
+ *  the touch event of React's syntheticEvent include the touches property including pageY/X,
+ *  so we don't have to detect the original event object
+ */
+/* let isTouchDevice = navigator.userAgent.match(
+  /(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/
+); */
+
+let touchStartY = 0;
+let touchEndY = 0;
+/**
+ * Handler for the touch start event.
+ */
+function touchStartHandler(event) {
+  console.log('touch start');
+  let touchEvents = getEventsPage(event);
+  touchStartY = touchEvents.y;
+}
+
+function touchMoveHandler(e, options) {
+  if (canScroll) {
+    //if theres any #
+    let touchEvents = getEventsPage(e);
+
+    touchEndY = touchEvents.y;
+    /* console.log('touchStartY:',touchStartY);
+    console.log('touchEndY:',touchEndY);
+    console.log('getWindowHeight:',getWindowHeight());
+    console.log('getWindowHeight2:',getWindowHeight() / (100 * options.touchSensitivity)); */
+
+    //vertical scrolling (only when autoScrolling is enabled)
+    //is the movement greater than the minimum resistance to scroll?
+    if (
+      Math.abs(touchStartY - touchEndY) >
+      Number(getWindowHeight()) / (100 * Number(options.touchSensitivity))
+    ) {
+      if (touchStartY > touchEndY) {
+        options.scrolling.call(
+          null,
+          'up',
+          e.currentTarget,
+          options.afterSectionUp
+        );
+      } else if (touchEndY > touchStartY) {
+        options.scrolling.call(
+          null,
+          'down',
+          e.currentTarget,
+          options.afterSectionDown
+        );
+      }
+    }
+  }
+}
+function getWindowHeight() {
+  return 'innerHeight' in window
+    ? window.innerHeight
+    : document.documentElement.offsetHeight;
+}
+/**
+ * Gets the pageX and pageY properties depending on the browser.
+ * https://github.com/alvarotrigo/fullPage.js/issues/194#issuecomment-34069854
+ */
+function getEventsPage(e) {
+  const events = [];
+  events.y = e.touches[0].pageY;
+  return events;
+}
+
+export default {
+  mouseWheelHandler(e, customOptions) {
+    initialize(e, customOptions, mouseWheelHandler);
+  },
+  touchStartHandler,
+  touchMoveHandler(e, customOptions) {
+    initialize(e, customOptions, touchMoveHandler);
+  }
+};

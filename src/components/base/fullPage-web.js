@@ -21,61 +21,61 @@
   // }
   window.fullpage = factory(window, document);
 })(this, window, document, function(window, document, undefined) {
-  ("use strict");
+  ('use strict');
 
   var fullpage;
 
   //CONSTANTS
 
   // keeping central set of classnames and selectors
-  var WRAPPER = "fullpage-wrapper";
-  var WRAPPER_SEL = "." + WRAPPER;
+  var WRAPPER = 'fullpage-wrapper';
+  var WRAPPER_SEL = '.' + WRAPPER;
 
   // util
-  var RESPONSIVE = "fp-responsive";
-  var NO_TRANSITION = "fp-notransition";
-  var DESTROYED = "fp-destroyed";
-  var ENABLED = "fp-enabled";
-  var VIEWING_PREFIX = "fp-viewing";
-  var ACTIVE = "active";
-  var ACTIVE_SEL = "." + ACTIVE;
+  var RESPONSIVE = 'fp-responsive';
+  var NO_TRANSITION = 'fp-notransition';
+  var DESTROYED = 'fp-destroyed';
+  var ENABLED = 'fp-enabled';
+  var VIEWING_PREFIX = 'fp-viewing';
+  var ACTIVE = 'active';
+  var ACTIVE_SEL = '.' + ACTIVE;
 
   // section
-  var SECTION_DEFAULT_SEL = ".section";
-  var SECTION = "fp-section";
-  var SECTION_SEL = "." + SECTION;
+  var SECTION_DEFAULT_SEL = '.section';
+  var SECTION = 'fp-section';
+  var SECTION_SEL = '.' + SECTION;
   var SECTION_ACTIVE_SEL = SECTION_SEL + ACTIVE_SEL;
 
   // section nav
-  var SECTION_NAV = "fp-nav";
-  var SECTION_NAV_SEL = "#" + SECTION_NAV;
-  var SECTION_NAV_TOOLTIP = "fp-tooltip";
-  var SHOW_ACTIVE_TOOLTIP = "fp-show-active";
+  var SECTION_NAV = 'fp-nav';
+  var SECTION_NAV_SEL = '#' + SECTION_NAV;
+  var SECTION_NAV_TOOLTIP = 'fp-tooltip';
+  var SHOW_ACTIVE_TOOLTIP = 'fp-show-active';
 
   // slide
-  var SLIDE_DEFAULT_SEL = ".slide";
-  var SLIDE = "fp-slide";
-  var SLIDE_SEL = "." + SLIDE;
+  var SLIDE_DEFAULT_SEL = '.slide';
+  var SLIDE = 'fp-slide';
+  var SLIDE_SEL = '.' + SLIDE;
   var SLIDE_ACTIVE_SEL = SLIDE_SEL + ACTIVE_SEL;
-  var SLIDES_WRAPPER = "fp-slides";
-  var SLIDES_WRAPPER_SEL = "." + SLIDES_WRAPPER;
-  var SLIDES_CONTAINER = "fp-slidesContainer";
-  var SLIDES_CONTAINER_SEL = "." + SLIDES_CONTAINER;
-  var TABLE = "fp-table";
+  var SLIDES_WRAPPER = 'fp-slides';
+  var SLIDES_WRAPPER_SEL = '.' + SLIDES_WRAPPER;
+  var SLIDES_CONTAINER = 'fp-slidesContainer';
+  var SLIDES_CONTAINER_SEL = '.' + SLIDES_CONTAINER;
+  var TABLE = 'fp-table';
 
   // slide nav
-  var SLIDES_NAV = "fp-slidesNav";
-  var SLIDES_NAV_SEL = "." + SLIDES_NAV;
-  var SLIDES_NAV_LINK_SEL = SLIDES_NAV_SEL + " a";
-  var SLIDES_ARROW = "fp-controlArrow";
-  var SLIDES_ARROW_SEL = "." + SLIDES_ARROW;
-  var SLIDES_PREV = "fp-prev";
-  var SLIDES_PREV_SEL = "." + SLIDES_PREV;
-  var SLIDES_ARROW_PREV = SLIDES_ARROW + " " + SLIDES_PREV;
+  var SLIDES_NAV = 'fp-slidesNav';
+  var SLIDES_NAV_SEL = '.' + SLIDES_NAV;
+  var SLIDES_NAV_LINK_SEL = SLIDES_NAV_SEL + ' a';
+  var SLIDES_ARROW = 'fp-controlArrow';
+  var SLIDES_ARROW_SEL = '.' + SLIDES_ARROW;
+  var SLIDES_PREV = 'fp-prev';
+  var SLIDES_PREV_SEL = '.' + SLIDES_PREV;
+  var SLIDES_ARROW_PREV = SLIDES_ARROW + ' ' + SLIDES_PREV;
   var SLIDES_ARROW_PREV_SEL = SLIDES_ARROW_SEL + SLIDES_PREV_SEL;
-  var SLIDES_NEXT = "fp-next";
-  var SLIDES_NEXT_SEL = "." + SLIDES_NEXT;
-  var SLIDES_ARROW_NEXT = SLIDES_ARROW + " " + SLIDES_NEXT;
+  var SLIDES_NEXT = 'fp-next';
+  var SLIDES_NEXT_SEL = '.' + SLIDES_NEXT;
+  var SLIDES_ARROW_NEXT = SLIDES_ARROW + ' ' + SLIDES_NEXT;
   var SLIDES_ARROW_NEXT_SEL = SLIDES_ARROW_SEL + SLIDES_NEXT_SEL;
 
   //globals
@@ -85,7 +85,7 @@
     /(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/
   );
   var isTouch =
-    "ontouchstart" in window ||
+    'ontouchstart' in window ||
     navigator.msMaxTouchPoints > 0 ||
     navigator.maxTouchPoints;
   var windowsHeight = getWindowHeight();
@@ -106,33 +106,34 @@
     if ((t /= d / 2) < 1) return c / 2 * t * t * t + b;
     return c / 2 * ((t -= 2) * t * t + 2) + b;
   };
-/**
- * @description 根据参数初始化,并获取container,originals,options的值
- * 
- * @param {HTMLElement} element 
- * @param {object} customOptions 
- */
-function initialize(element, customOptions) {
+  /**
+   * @description 根据参数初始化,并获取container,originals,options的值
+   *
+   * @param {HTMLElement} element
+   * @param {object} customOptions
+   */
+  function initialize(element, customOptions) {
     // Create some defaults, extending them with any options that were provided
     var defaults = {
       //navigation
       menu: false,
       anchors: [],
       navigation: false,
-      navigationPosition: "right",
-      navigationColor: "#000",
+      navigationPosition: 'right',
+      navigationColor: '#000',
       navigationTooltips: [],
       showActiveTooltip: false,
       slidesNavigation: false,
-      slidesNavPosition: "bottom",
+      slidesNavPosition: 'bottom',
       scrollBar: false, //scrolling
       css3: true,
       scrollingSpeed: 700,
       autoScrolling: true,
       fitToSection: true,
       fitToSectionDelay: 1000,
-      easingcss3: "ease",
+      easingcss3: 'ease',
       loopHorizontal: true,
+      //lr: for touch event
       touchSensitivity: 5, //Accessibility
       keyboardScrolling: true,
       recordHistory: true, //design
@@ -156,33 +157,33 @@ function initialize(element, customOptions) {
 
     init(afterDomReady);
   }
-/**
- * @description 初始化操作包括:
- * 1. 给container加上WRAPPER类,以供内部使用(什么作用?)
- * 2. 给html加上ENABLED类,以供内部使用(什么作用?)
- * 3. 改变container的样式(有什么作用?)
- * 4. 测试是否支持css3的3d属性,来决定是用transform实现动画还是模拟的jQuery animation
- * 5. 绑定事件
- *  - setMouseWheelScrolling
- *   - >> addMouseWheelHandler 
- *   - >> addHandler(绑定wheel事件,并处理了各个浏览器的兼容性问题) 
- *   - >> MouseWheelHandler(根据滑动值,决定滑动方向,并以字符串的方式传入scrolling) 
- *   - >> scrolling 
- *   - >> moveSectionDown/up()
- *   - >> scrollPage(element,callback,isMoveUp)
- *     - 会组装一个v对象,向下传递
- *     - canScroll = false
- *   - >> onleave(activeSection,leavingSection,getNodeIndex(element)+1,getYmovement(element)) & performMovement(v)
- *   - >> 兼容性判断css3的transform功能: transformContainer || scrollTo
- *   - >> afterSectionLoads(v)
- *   - >> afterLoad(v.element, v.anchorLink, v.sectionIndex + 1) && canScroll = true && v.callback
- *  - addTouchHandler
- *  - addResizeHandler
- *  - addScrollHandler
- * 6. 执行afterDomReady函数
- * @param {function} callback 
- */
-function init(callback) {
+  /**
+   * @description 初始化操作包括:
+   * 1. 给container加上WRAPPER类,以供内部使用(什么作用?)
+   * 2. 给html加上ENABLED类,以供内部使用(什么作用?)
+   * 3. 改变container的样式(有什么作用?)
+   * 4. 测试是否支持css3的3d属性,来决定是用transform实现动画还是模拟的jQuery animation
+   * 5. 绑定事件
+   *  - setMouseWheelScrolling
+   *   - >> addMouseWheelHandler
+   *   - >> addHandler(绑定wheel事件,并处理了各个浏览器的兼容性问题)
+   *   - >> MouseWheelHandler(根据滑动值,决定滑动方向,并以字符串的方式传入scrolling)
+   *   - >> scrolling
+   *   - >> moveSectionDown/up()
+   *   - >> scrollPage(element,callback,isMoveUp)
+   *     - 会组装一个v对象,向下传递
+   *     - canScroll = false
+   *   - >> onleave(activeSection,leavingSection,getNodeIndex(element)+1,getYmovement(element)) & performMovement(v)
+   *   - >> 兼容性判断css3的transform功能: transformContainer || scrollTo
+   *   - >> afterSectionLoads(v)
+   *   - >> afterLoad(v.element, v.anchorLink, v.sectionIndex + 1) && canScroll = true && v.callback
+   *  - addTouchHandler
+   *  - addResizeHandler
+   *  - addScrollHandler
+   * 6. 执行afterDomReady函数
+   * @param {function} callback
+   */
+  function init(callback) {
     removeClass(container, DESTROYED); //in case it was destroyed before initilizing it again
     displayWarnings();
 
@@ -193,17 +194,17 @@ function init(callback) {
 
     if (container !== null) {
       css(container, {
-        height: "100%",
-        position: "relative"
+        height: '100%',
+        position: 'relative'
       });
 
       //adding a class to recognize the container internally in the code
       addClass(container, WRAPPER);
-      addClass($("html"), ENABLED);
+      addClass($('html'), ENABLED);
     } else {
       //trying to use fullpage without a selector?
       showError(
-        "error",
+        'error',
         "Error! Fullpage.js needs to be initialized with a selector. For example: fullpage('#fullpage');"
       );
     }
@@ -242,8 +243,8 @@ function init(callback) {
         addClass(section, ACTIVE);
       }
 
-      if (typeof options.anchors[index] !== "undefined") {
-        section.setAttribute("data-anchor", options.anchors[index]);
+      if (typeof options.anchors[index] !== 'undefined') {
+        section.setAttribute('data-anchor', options.anchors[index]);
 
         //activating the menu / nav element on load
         if (hasClass(section, ACTIVE)) {
@@ -264,13 +265,13 @@ function init(callback) {
           SLIDES_CONTAINER +
           '">' +
           slidesHTML +
-          "</div></div>";
+          '</div></div>';
         section.innerHTML = newHTML;
 
         //getting again the NEW dom elements after innerHTML
         slides = $$(SLIDE_SEL, section);
 
-        setCss($(SLIDES_CONTAINER_SEL, section), "width", sliderWidth + "%");
+        setCss($(SLIDES_CONTAINER_SEL, section), 'width', sliderWidth + '%');
 
         if (options.controlArrows && numSlides > 1) {
           createSlideArrows(section);
@@ -282,7 +283,7 @@ function init(callback) {
 
         for (var a = 0; a < slides.length; a++) {
           var currentSlide = slides[a];
-          setCss(currentSlide, "width", slideWidth + "%");
+          setCss(currentSlide, 'width', slideWidth + '%');
         }
 
         var startingSlide = $(SLIDE_ACTIVE_SEL, section);
@@ -306,12 +307,12 @@ function init(callback) {
     for (var i = 0; i < slidesArrows.length; i++) {
       addListenerMulti(
         slidesArrows[i],
-        "click onclick touchstart",
+        'click onclick touchstart',
         arrowsHandler
       );
     }
 
-    setAutoScrolling(options.autoScrolling, "internal");
+    setAutoScrolling(options.autoScrolling, 'internal');
 
     //the starting point is a slide?
     var activeSection = $(SECTION_ACTIVE_SEL);
@@ -330,15 +331,15 @@ function init(callback) {
 
     //vertical centered of the navigation + first bullet active
     if (options.navigation) {
-      setCss(nav, "margin-top", "-" + nav.offsetHeight / 2 + "px");
-      var activeLi = $$("li", nav)[getNodeIndex($(SECTION_ACTIVE_SEL))];
-      addClass($("a", activeLi), ACTIVE);
+      setCss(nav, 'margin-top', '-' + nav.offsetHeight / 2 + 'px');
+      var activeLi = $$('li', nav)[getNodeIndex($(SECTION_ACTIVE_SEL))];
+      addClass($('a', activeLi), ACTIVE);
     }
 
     afterRenderActions();
 
     //getting the anchor link in the URL and deleting the `#`
-    var value = window.location.hash.replace("#", "").split("/");
+    var value = window.location.hash.replace('#', '').split('/');
     var destiny = value[0];
 
     if (destiny.length) {
@@ -374,9 +375,9 @@ function init(callback) {
     addHandler(
       document,
       scrollToAnchor,
-      "DOMContentLoaded",
-      "DOMContentLoaded",
-      "DOMContentLoaded"
+      'DOMContentLoaded',
+      'DOMContentLoaded',
+      'DOMContentLoaded'
     );
   }
 
@@ -387,7 +388,7 @@ function init(callback) {
    */
   function extend(defaultOptions, options) {
     //creating the object if it doesnt exist
-    if (typeof options !== "object") {
+    if (typeof options !== 'object') {
       options = {};
     }
 
@@ -446,17 +447,17 @@ function init(callback) {
   }
 
   function toggle(element, display) {
-    if (typeof display !== "undefined") {
+    if (typeof display !== 'undefined') {
       if (display) {
-        element.style.display = "block";
+        element.style.display = 'block';
       } else {
-        element.style.display = "none";
+        element.style.display = 'none';
       }
     } else {
-      if (element.style.display == "block") {
-        element.style.display = "none";
+      if (element.style.display == 'block') {
+        element.style.display = 'none';
       } else {
-        element.style.display = "block";
+        element.style.display = 'block';
       }
     }
 
@@ -465,19 +466,19 @@ function init(callback) {
 
   //http://jaketrent.com/post/addremove-classes-raw-javascript/
   function hasClass(ele, cls) {
-    return !!ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
+    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
   }
 
   function removeClass(element, className) {
     if (element && hasClass(element, className)) {
-      var reg = new RegExp("(\\s|^)" + className + "(\\s|$)");
-      element.className = element.className.replace(reg, "");
+      var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+      element.className = element.className.replace(reg, '');
     }
   }
 
   function addClass(element, className) {
     if (element && !hasClass(element, className)) {
-      element.className += " " + className;
+      element.className += ' ' + className;
     }
   }
 
@@ -487,19 +488,19 @@ function init(callback) {
   }
 
   function getWindowWidth() {
-    return "innerWidth" in window
+    return 'innerWidth' in window
       ? window.innerWidth
       : document.documentElement.offsetWidth;
   }
 
   function getWindowHeight() {
-    return "innerHeight" in window
+    return 'innerHeight' in window
       ? window.innerHeight
       : document.documentElement.offsetHeight;
   }
 
   function clone(obj) {
-    if (null === obj || "object" !== typeof obj) {
+    if (null === obj || 'object' !== typeof obj) {
       return obj;
     }
     var copy = obj.constructor();
@@ -520,12 +521,12 @@ function init(callback) {
     var getType = {};
     return (
       functionToCheck &&
-      getType.toString.call(functionToCheck) === "[object Function]"
+      getType.toString.call(functionToCheck) === '[object Function]'
     );
   }
 
   function addListenerMulti(el, s, fn) {
-    var evts = s.split(" ");
+    var evts = s.split(' ');
     for (var i = 0, iLen = evts.length; i < iLen; i++) {
       if (document.addEventListener) {
         el.addEventListener(evts[i], fn, false);
@@ -560,7 +561,7 @@ function init(callback) {
 
         if (currentTime < duration) {
           setTimeout(animateScroll, increment);
-        } else if (typeof callback !== "undefined") {
+        } else if (typeof callback !== 'undefined') {
           callback();
         }
       } else if (currentTime < duration) {
@@ -654,32 +655,32 @@ function init(callback) {
         element.scrollTo(0, val);
       }
     } else {
-      element.style.top = val + "px";
+      element.style.top = val + 'px';
     }
   }
 
   function setAutoScrolling(value, type) {
-    setVariableState("autoScrolling", value, type);
+    setVariableState('autoScrolling', value, type);
 
     var element = $(SECTION_ACTIVE_SEL);
 
     if (options.autoScrolling && !options.scrollBar) {
       css(document.body, {
-        overflow: "hidden",
-        height: "100%"
+        overflow: 'hidden',
+        height: '100%'
       });
 
-      css(getByTag("html"), {
-        overflow: "hidden",
-        height: "100%"
+      css(getByTag('html'), {
+        overflow: 'hidden',
+        height: '100%'
       });
 
-      setRecordHistory(options.recordHistory, "internal");
+      setRecordHistory(options.recordHistory, 'internal');
 
       //for IE touch devices
       css(container, {
-        "-ms-touch-action": "none",
-        "touch-action": "none"
+        '-ms-touch-action': 'none',
+        'touch-action': 'none'
       });
 
       if (element) {
@@ -688,21 +689,21 @@ function init(callback) {
       }
     } else {
       css(document.body, {
-        overflow: "visible",
-        height: "100%"
+        overflow: 'visible',
+        height: '100%'
       });
 
-      css(getByTag("html"), {
-        overflow: "visible",
-        height: "100%"
+      css(getByTag('html'), {
+        overflow: 'visible',
+        height: '100%'
       });
 
-      setRecordHistory(false, "internal");
+      setRecordHistory(false, 'internal');
 
       //for IE touch devices
       css(container, {
-        "-ms-touch-action": "",
-        "touch-action": ""
+        '-ms-touch-action': '',
+        'touch-action': ''
       });
 
       silentScroll(0);
@@ -717,21 +718,21 @@ function init(callback) {
    * Defines wheter to record the history for each hash change in the URL.
    */
   function setRecordHistory(value, type) {
-    setVariableState("recordHistory", value, type);
+    setVariableState('recordHistory', value, type);
   }
 
   /**
    * Defines the scrolling speed
    */
   function setScrollingSpeed(value, type) {
-    setVariableState("scrollingSpeed", value, type);
+    setVariableState('scrollingSpeed', value, type);
   }
 
   /**
    * Sets fitToSection
    */
   function setFitToSection(value, type) {
-    setVariableState("fitToSection", value, type);
+    setVariableState('fitToSection', value, type);
   }
 
   /**
@@ -779,9 +780,9 @@ function init(callback) {
    * Anchors or index positions can be used as params.
    */
   function silentMoveTo(sectionAnchor, slideAnchor) {
-    setScrollingSpeed(0, "internal");
+    setScrollingSpeed(0, 'internal');
     moveTo(sectionAnchor, slideAnchor);
-    setScrollingSpeed(originals.scrollingSpeed, "internal");
+    setScrollingSpeed(originals.scrollingSpeed, 'internal');
   }
 
   /**
@@ -791,7 +792,7 @@ function init(callback) {
   function moveTo(sectionAnchor, slideAnchor) {
     var destiny = getSectionByAnchor(sectionAnchor);
 
-    if (typeof slideAnchor !== "undefined") {
+    if (typeof slideAnchor !== 'undefined') {
       scrollPageAndSlide(sectionAnchor, slideAnchor);
     } else if (destiny) {
       scrollPage(destiny);
@@ -802,14 +803,14 @@ function init(callback) {
    * Slides right the slider of the active section.
    */
   function moveSlideRight() {
-    moveSlide("next");
+    moveSlide('next');
   }
 
   /**
    * Slides left the slider of the active section.
    */
   function moveSlideLeft() {
-    moveSlide("prev");
+    moveSlide('prev');
   }
 
   /**
@@ -857,15 +858,15 @@ function init(callback) {
    * Creates the control arrows for the given section
    */
   function createSlideArrows(section) {
-    var prev = document.createElement("div");
+    var prev = document.createElement('div');
     prev.className = SLIDES_ARROW_PREV;
 
-    var next = document.createElement("div");
+    var next = document.createElement('div');
     next.className = SLIDES_ARROW_NEXT;
 
     var slides = $(SLIDES_WRAPPER_SEL, section);
 
-    if (options.controlArrowColor != "#fff") {
+    if (options.controlArrowColor != '#fff') {
       //setCss(next, 'border-color', 'transparent transparent transparent '+options.controlArrowColor);
       //setCss(prev, 'border-color', 'transparent '+ options.controlArrowColor + ' transparent transparent');
     }
@@ -874,7 +875,7 @@ function init(callback) {
     slides.parentNode.appendChild(next);
 
     if (!options.loopHorizontal) {
-      $(SLIDES_ARROW_PREV_SEL, section).style.display = "none";
+      $(SLIDES_ARROW_PREV_SEL, section).style.display = 'none';
     }
   }
 
@@ -882,27 +883,27 @@ function init(callback) {
    * Creates a vertical navigation bar.
    */
   function addVerticalNavigation() {
-    var div = document.createElement("div");
-    div.setAttribute("id", SECTION_NAV);
+    var div = document.createElement('div');
+    div.setAttribute('id', SECTION_NAV);
 
-    var divUl = document.createElement("ul");
+    var divUl = document.createElement('ul');
     div.appendChild(divUl);
 
     document.body.appendChild(div);
 
     nav = $(SECTION_NAV_SEL);
 
-    setCss(nav, "color", options.navigationColor);
+    setCss(nav, 'color', options.navigationColor);
     addClass(nav, options.navigationPosition);
 
     if (options.showActiveTooltip) {
       addClass(nav, SHOW_ACTIVE_TOOLTIP);
     }
 
-    var li = "";
+    var li = '';
 
     for (var i = 0; i < $$(SECTION_SEL).length; i++) {
-      var link = "";
+      var link = '';
       if (options.anchors.length) {
         link = options.anchors[i];
       }
@@ -911,27 +912,27 @@ function init(callback) {
 
       // Only add tooltip if needed (defined by user)
       var tooltip = options.navigationTooltips[i];
-      if (typeof tooltip !== undefined && tooltip !== "") {
+      if (typeof tooltip !== undefined && tooltip !== '') {
         li +=
           '<div class="' +
           SECTION_NAV_TOOLTIP +
-          " " +
+          ' ' +
           options.navigationPosition +
           '">' +
           tooltip +
-          "</div>";
+          '</div>';
       }
 
-      li += "</li>";
+      li += '</li>';
     }
 
-    var ul = $("ul", nav);
+    var ul = $('ul', nav);
     ul.innerHTML = ul.innerHTML + li;
 
     //creating the event listener
     var links = $$(SLIDES_NAV_LINK_SEL);
     for (var l = 0; l < links.length; l++) {
-      addListenerMulti(links[l], "click onclick touchstart", function(e) {
+      addListenerMulti(links[l], 'click onclick touchstart', function(e) {
         e = window.event || e || e.originalEvent;
         preventDefault(e);
         var index = getNodeIndex(this.parentNode);
@@ -950,7 +951,7 @@ function init(callback) {
     isFunction(options.afterLoad) &&
       options.afterLoad.call(
         section,
-        section.getAttribute("data-anchor"),
+        section.getAttribute('data-anchor'),
         getNodeIndex(section) + 1
       );
     isFunction(options.afterRender) && options.afterRender.call(container);
@@ -993,12 +994,12 @@ function init(callback) {
         var leavingSection = $(SECTION_ACTIVE_SEL);
         var leavingSectionIndex = getNodeIndex(leavingSection) + 1;
         var yMovement = getYmovement(currentSection);
-        var anchorLink = currentSection.getAttribute("data-anchor");
+        var anchorLink = currentSection.getAttribute('data-anchor');
         var sectionIndex = getNodeIndex(currentSection) + 1;
         var activeSlide = $(SLIDE_ACTIVE_SEL, currentSection);
 
         if (activeSlide) {
-          var slideAnchorLink = activeSlide.getAttribute("data-anchor");
+          var slideAnchorLink = activeSlide.getAttribute('data-anchor');
           var slideIndex = getNodeIndex(activeSlide);
         }
 
@@ -1064,7 +1065,7 @@ function init(callback) {
    * by 'automatically' scrolling a section or by using the default and normal scrolling.
    */
   function scrolling(type) {
-    if (type == "down") {
+    if (type == 'down') {
       moveSectionDown();
     } else {
       moveSectionUp();
@@ -1125,9 +1126,9 @@ function init(callback) {
             getWindowHeight() / 100 * options.touchSensitivity
           ) {
             if (touchStartY > touchEndY) {
-              scrolling("down");
+              scrolling('down');
             } else if (touchEndY > touchStartY) {
-              scrolling("up");
+              scrolling('up');
             }
           }
         }
@@ -1141,7 +1142,7 @@ function init(callback) {
    */
   function isReallyTouch(e) {
     //if is not IE   ||  IE is detecting `touch` or `pen`
-    return typeof e.pointerType === "undefined" || e.pointerType != "mouse";
+    return typeof e.pointerType === 'undefined' || e.pointerType != 'mouse';
   }
 
   /**
@@ -1210,8 +1211,8 @@ function init(callback) {
 
       var timeDiff = curTime - prevTime;
       prevTime = curTime;
-      console.log("timeDiff:", timeDiff);
-      console.log("scrollings:", scrollings);
+      console.log('timeDiff:', timeDiff);
+      console.log('scrollings:', scrollings);
       //haven't they scrolled in a while?
       //(enough to be consider a different scrolling action to scroll another section)
       if (timeDiff > 200) {
@@ -1229,11 +1230,11 @@ function init(callback) {
         if (isAccelerating) {
           //scrolling down?
           if (delta < 0) {
-            scrolling("down");
+            scrolling('down');
 
             //scrolling up?
           } else {
-            scrolling("up");
+            scrolling('up');
           }
         }
       }
@@ -1261,7 +1262,7 @@ function init(callback) {
 
     var currentSlide = $(SLIDE_ACTIVE_SEL, slides);
     var destiny = null;
-    if (direction === "prev") {
+    if (direction === 'prev') {
       destiny = prev(currentSlide);
     } else {
       destiny = next(currentSlide);
@@ -1273,7 +1274,7 @@ function init(callback) {
       if (!options.loopHorizontal) return;
 
       var siblings = getAllSiblings(currentSlide);
-      if (direction === "prev") {
+      if (direction === 'prev') {
         destiny = siblings[siblings.length - 1]; //last
       } else {
         destiny = siblings[0]; //first
@@ -1292,7 +1293,7 @@ function init(callback) {
   function keepSlidesPosition() {
     var activeSlides = $$(SLIDE_ACTIVE_SEL);
     for (var i = 0; i < activeSlides.length; i++) {
-      silentLandscapeScroll(activeSlides[i], "internal");
+      silentLandscapeScroll(activeSlides[i], 'internal');
     }
   }
 
@@ -1310,7 +1311,7 @@ function init(callback) {
       isMovementUp: isMovementUp,
       dtop: element.offsetTop,
       yMovement: getYmovement(element),
-      anchorLink: element.getAttribute("data-anchor"),
+      anchorLink: element.getAttribute('data-anchor'),
       sectionIndex: getNodeIndex(element),
       activeSlide: $(SLIDE_ACTIVE_SEL, element),
       activeSection: $(SECTION_ACTIVE_SEL),
@@ -1328,7 +1329,7 @@ function init(callback) {
     }
 
     if (v.activeSlide) {
-      var slideAnchorLink = v.activeSlide.getAttribute("data-anchor");
+      var slideAnchorLink = v.activeSlide.getAttribute('data-anchor');
       var slideIndex = getNodeIndex(v.activeSlide);
     }
 
@@ -1370,7 +1371,7 @@ function init(callback) {
   function performMovement(v) {
     // using CSS3 translate functionality
     if (options.css3 && options.autoScrolling && !options.scrollBar) {
-      var translate3d = "translate3d(0px, -" + v.dtop + "px, 0px)";
+      var translate3d = 'translate3d(0px, -' + v.dtop + 'px, 0px)';
       transformContainer(translate3d, true);
 
       //even when the scrollingSpeed is 0 there's a little delay, which might cause the
@@ -1405,7 +1406,7 @@ function init(callback) {
     //top property animation
     if (options.autoScrolling && !options.scrollBar) {
       scroll.options = -top;
-      scroll.element = $("." + WRAPPER);
+      scroll.element = $('.' + WRAPPER);
     } else {
       //window real scrolling
       scroll.options = top;
@@ -1433,7 +1434,7 @@ function init(callback) {
    */
   function scrollToAnchor() {
     //getting the anchor link in the URL and deleting the `#`
-    var value = window.location.hash.replace("#", "").split("/");
+    var value = window.location.hash.replace('#', '').split('/');
     var section = value[0];
     var slide = value[1];
 
@@ -1446,9 +1447,9 @@ function init(callback) {
   //detecting any change on the URL to scroll to the given anchor link
   //(a way to detect back history button as we play with the hashes on the URL)
   if (document.addEventListener) {
-    window.addEventListener("hashchange", hashChangeHandler, false); //IE9, Chrome, Safari, Oper
+    window.addEventListener('hashchange', hashChangeHandler, false); //IE9, Chrome, Safari, Oper
   } else {
-    window.attachEvent("onhashchange", hashChangeHandler); //IE 6/7/8
+    window.attachEvent('onhashchange', hashChangeHandler); //IE 6/7/8
   }
 
   function arrowsHandler(event) {
@@ -1469,16 +1470,16 @@ function init(callback) {
 
   function hashChangeHandler() {
     if (!isScrolling) {
-      var value = window.location.hash.replace("#", "").split("/");
+      var value = window.location.hash.replace('#', '').split('/');
       var section = value[0];
       var slide = value[1];
 
       if (section.length) {
         //when moving to a slide in the first section for the first time (first time to add an anchor to the URL)
-        var isFirstSlideMove = typeof lastScrolledDestiny === "undefined";
+        var isFirstSlideMove = typeof lastScrolledDestiny === 'undefined';
         var isFirstScrollMove =
-          typeof lastScrolledDestiny === "undefined" &&
-          typeof slide === "undefined" &&
+          typeof lastScrolledDestiny === 'undefined' &&
+          typeof slide === 'undefined' &&
           !slideMoving;
 
         /*in order to call scrollpage() only once for each destination at a time
@@ -1506,8 +1507,8 @@ function init(callback) {
     var tagName = activeElement.tagName;
 
     if (
-      tagName !== "SELECT" &&
-      tagName !== "INPUT" &&
+      tagName !== 'SELECT' &&
+      tagName !== 'INPUT' &&
       options.keyboardScrolling &&
       options.autoScrolling
     ) {
@@ -1580,7 +1581,7 @@ function init(callback) {
   if (slidesNav !== null) {
     addListenerMulti(
       $(SLIDES_NAV_LINK_SEL),
-      "click onclick touchstart",
+      'click onclick touchstart',
       function(e) {
         preventDefault(e);
 
@@ -1591,7 +1592,7 @@ function init(callback) {
         var slides = $(SLIDES_WRAPPER_SEL, section);
 
         var li = closest(this, function(el) {
-          return el.tagName === "li";
+          return el.tagName === 'li';
         });
         var liIndex = getNodeIndex(li);
         var destiny = $$(SLIDE_SEL, slides)[liIndex];
@@ -1624,7 +1625,7 @@ function init(callback) {
     });
 
     var sectionIndex = getNodeIndex(section);
-    var anchorLink = section.getAttribute("data-anchor");
+    var anchorLink = section.getAttribute('data-anchor');
     var slidesNav = $(SLIDES_NAV_SEL, section);
     var slideAnchor = getSlideAnchor(destiny);
 
@@ -1638,7 +1639,7 @@ function init(callback) {
       var xMovement = getXmovement(prevSlideIndex, slideIndex);
 
       //if the site is not just resizing and readjusting the slides
-      if (!localIsResizing && xMovement !== "none") {
+      if (!localIsResizing && xMovement !== 'none') {
         isFunction(options.onSlideLeave) &&
           options.onSlideLeave.call(
             prevSlide,
@@ -1664,7 +1665,7 @@ function init(callback) {
       toggle($(SLIDES_ARROW_PREV_SEL, section), slideIndex !== 0);
 
       //hidding it for the last slide, showing for the rest
-      toggle($(SLIDES_ARROW_NEXT_SEL, section), !destiny.is(":last-child"));
+      toggle($(SLIDES_ARROW_NEXT_SEL, section), !destiny.is(':last-child'));
     }
 
     //only changing the URL if the slides are in the current section (not for resize re-adjusting)
@@ -1690,7 +1691,7 @@ function init(callback) {
 
     if (options.css3) {
       var translate3d =
-        "translate3d(-" + Math.round(destiny.offsetLeft) + "px, 0px, 0px)";
+        'translate3d(-' + Math.round(destiny.offsetLeft) + 'px, 0px, 0px)';
       var slidesContainer = $(SLIDES_CONTAINER_SEL, slides);
 
       addAnimation(slidesContainer, options.scrollingSpeed > 0);
@@ -1716,8 +1717,8 @@ function init(callback) {
 
     if (options.slidesNavigation) {
       removeClass($(ACTIVE_SEL, slidesNav), ACTIVE);
-      var activeNavLi = $$("li", slidesNav)[slideIndex];
-      var activeLink = $("a", activeNavLi);
+      var activeNavLi = $$('li', slidesNav)[slideIndex];
+      var activeLink = $('a', activeNavLi);
       addClass(activeLink, ACTIVE);
     }
   }
@@ -1729,7 +1730,7 @@ function init(callback) {
     // rebuild immediately on touch devices
     if (isTouchDevice) {
       //if the keyboard is visible
-      if (document.activeElement.getAttribute("type") !== "text") {
+      if (document.activeElement.getAttribute('type') !== 'text') {
         var currentHeight = getWindowHeight();
 
         //making sure the change in the viewport size is enough to force a rebuild. (20 % of the window to avoid problems when hidding scroll bars)
@@ -1757,12 +1758,12 @@ function init(callback) {
    */
   function addAnimation(element) {
     var transition =
-      "all " + options.scrollingSpeed + "ms " + options.easingcss3;
+      'all ' + options.scrollingSpeed + 'ms ' + options.easingcss3;
 
     removeClass(element, NO_TRANSITION);
 
     css(element, {
-      "-webkit-transition": transition,
+      '-webkit-transition': transition,
       transition: transition
     });
 
@@ -1786,8 +1787,8 @@ function init(callback) {
       if (name) {
         addClass($('a[href="#' + name + '"]', nav), ACTIVE);
       } else {
-        var currentLi = $$("li", nav)[sectionIndex];
-        addClass($("a", currentLi), ACTIVE);
+        var currentLi = $$('li', nav)[sectionIndex];
+        addClass($('a', currentLi), ACTIVE);
       }
     }
   }
@@ -1818,12 +1819,12 @@ function init(callback) {
     var fromIndex = getNodeIndex($(SECTION_ACTIVE_SEL));
     var toIndex = getNodeIndex(destiny);
     if (fromIndex == toIndex) {
-      return "none";
+      return 'none';
     }
     if (fromIndex > toIndex) {
-      return "up";
+      return 'up';
     }
-    return "down";
+    return 'down';
   }
 
   /**
@@ -1832,12 +1833,12 @@ function init(callback) {
    */
   function getXmovement(fromIndex, toIndex) {
     if (fromIndex == toIndex) {
-      return "none";
+      return 'none';
     }
     if (fromIndex > toIndex) {
-      return "left";
+      return 'left';
     }
-    return "right";
+    return 'right';
   }
 
   /**
@@ -1891,7 +1892,7 @@ function init(callback) {
   function scrollPageAndSlide(destiny, slide) {
     var section = getSectionByAnchor(decodeURI(destiny));
 
-    if (typeof slide === "undefined") {
+    if (typeof slide === 'undefined') {
       slide = 0;
     }
 
@@ -1910,7 +1911,7 @@ function init(callback) {
    * Scrolls the slider to the given slide destination for the given section
    */
   function scrollSlider(section, slideAnchor) {
-    if (typeof slideAnchor !== "undefined") {
+    if (typeof slideAnchor !== 'undefined') {
       var slides = $(SLIDES_WRAPPER_SEL, section);
       var destiny = getSlideByAnchor(slideAnchor, section);
 
@@ -1924,21 +1925,21 @@ function init(callback) {
    * Creates a landscape navigation bar with dots for horizontal sliders.
    */
   function addSlidesNavigation(section, numSlides) {
-    var div = document.createElement("div");
+    var div = document.createElement('div');
     div.className = SLIDES_NAV;
 
-    var divUl = document.createElement("ul");
+    var divUl = document.createElement('ul');
     div.appendChild(divUl);
 
     section.appendChild(div);
 
     var nav = $(SLIDES_NAV_SEL, section);
-    var ul = $("ul", nav);
+    var ul = $('ul', nav);
 
     //top or bottom
     addClass(nav, options.slidesNavPosition);
 
-    var list = "";
+    var list = '';
     for (var i = 0; i < numSlides; i++) {
       list = list + '<li><a href="#"><span></span></a></li>';
     }
@@ -1946,10 +1947,10 @@ function init(callback) {
     ul.innerHTML = ul.innerHTML + list;
 
     //centering it
-    setCss(nav, "margin-left", "-" + nav.offsetWidth / 2 + "px");
+    setCss(nav, 'margin-left', '-' + nav.offsetWidth / 2 + 'px');
 
-    var firstLi = $$("li", nav)[0];
-    addClass($("a", firstLi), ACTIVE);
+    var firstLi = $$('li', nav)[0];
+    addClass($('a', firstLi), ACTIVE);
   }
 
   /**
@@ -1957,25 +1958,25 @@ function init(callback) {
    * It changes the URL hash when needed and updates the body class.
    */
   function setState(slideIndex, slideAnchor, anchorLink, sectionIndex) {
-    var sectionHash = "";
+    var sectionHash = '';
 
     if (options.anchors.length) {
       //isn't it the first slide?
       if (slideIndex) {
-        if (typeof anchorLink !== "undefined") {
+        if (typeof anchorLink !== 'undefined') {
           sectionHash = anchorLink;
         }
 
         //slide without anchor link? We take the index instead.
-        if (typeof slideAnchor === "undefined") {
+        if (typeof slideAnchor === 'undefined') {
           slideAnchor = slideIndex;
         }
 
         lastScrolledSlide = slideAnchor;
-        setUrlHash(sectionHash + "/" + slideAnchor);
+        setUrlHash(sectionHash + '/' + slideAnchor);
 
         //first slide won't have slide anchor, just the section one
-      } else if (typeof slideIndex !== "undefined") {
+      } else if (typeof slideIndex !== 'undefined') {
         lastScrolledSlide = slideAnchor;
         setUrlHash(anchorLink);
       } else {
@@ -1995,10 +1996,10 @@ function init(callback) {
     } else {
       //Mobile Chrome doesn't work the normal way, so... lets use HTML5 for phones :)
       if (isTouchDevice || isTouch) {
-        document.history.replaceState(undefined, undefined, "#" + url);
+        document.history.replaceState(undefined, undefined, '#' + url);
       } else {
-        var baseUrl = window.location.href.split("#")[0];
-        window.location.replace(baseUrl + "#" + url);
+        var baseUrl = window.location.href.split('#')[0];
+        window.location.replace(baseUrl + '#' + url);
       }
     }
   }
@@ -2007,7 +2008,7 @@ function init(callback) {
    * Gets the anchor for the given slide. Its index will be used if there's none.
    */
   function getSlideAnchor(slide) {
-    var slideAnchor = slide.getAttribute("data-anchor");
+    var slideAnchor = slide.getAttribute('data-anchor');
     var slideIndex = getNodeIndex(slide);
 
     //Slide without anchor link? We take the index instead.
@@ -2025,7 +2026,7 @@ function init(callback) {
     var section = $(SECTION_ACTIVE_SEL);
     var slide = $(SLIDE_ACTIVE_SEL, section);
 
-    var sectionAnchor = section.getAttribute("data-anchor");
+    var sectionAnchor = section.getAttribute('data-anchor');
     var sectionIndex = getNodeIndex(section);
 
     var text = String(sectionIndex);
@@ -2036,18 +2037,18 @@ function init(callback) {
 
     if (slide) {
       var slideAnchor = getSlideAnchor(slide);
-      text = text + "-" + slideAnchor;
+      text = text + '-' + slideAnchor;
     }
 
     //changing slash for dash to make it a valid CSS style
-    text = text.replace("/", "-").replace("#", "");
+    text = text.replace('/', '-').replace('#', '');
 
     //removing previous anchor classes
-    var classRe = new RegExp("\\b\\s?" + VIEWING_PREFIX + "-[^\\s]+\\b", "g");
-    document.body.className = document.body.className.replace(classRe, "");
+    var classRe = new RegExp('\\b\\s?' + VIEWING_PREFIX + '-[^\\s]+\\b', 'g');
+    document.body.className = document.body.className.replace(classRe, '');
 
     //adding the current anchor
-    addClass(document.body, VIEWING_PREFIX + "-" + text);
+    addClass(document.body, VIEWING_PREFIX + '-' + text);
   }
 
   /**
@@ -2056,14 +2057,14 @@ function init(callback) {
    * http://stackoverflow.com/questions/5661671/detecting-transform-translate3d-support
    */
   function support3d() {
-    var el = document.createElement("p"),
+    var el = document.createElement('p'),
       has3d,
       transforms = {
-        webkitTransform: "-webkit-transform",
-        OTransform: "-o-transform",
-        msTransform: "-ms-transform",
-        MozTransform: "-moz-transform",
-        transform: "transform"
+        webkitTransform: '-webkit-transform',
+        OTransform: '-o-transform',
+        msTransform: '-ms-transform',
+        MozTransform: '-moz-transform',
+        transform: 'transform'
       };
 
     // Add it to the body to get the computed style.
@@ -2071,14 +2072,14 @@ function init(callback) {
 
     for (var t in transforms) {
       if (el.style[t] !== undefined) {
-        el.style[t] = "translate3d(1px,1px,1px)";
+        el.style[t] = 'translate3d(1px,1px,1px)';
         has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
       }
     }
 
     document.body.removeChild(el);
 
-    return has3d !== undefined && has3d.length > 0 && has3d !== "none";
+    return has3d !== undefined && has3d.length > 0 && has3d !== 'none';
   }
 
   /**
@@ -2089,10 +2090,10 @@ function init(callback) {
     var wrapper = $(WRAPPER_SEL);
 
     if (document.addEventListener) {
-      wrapper.removeEventListener("mousewheel", MouseWheelHandler, false); //IE9, Chrome, Safari, Oper
-      wrapper.removeEventListener("wheel", MouseWheelHandler, false); //Firefox
+      wrapper.removeEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper
+      wrapper.removeEventListener('wheel', MouseWheelHandler, false); //Firefox
     } else {
-      wrapper.detachEvent("onmousewheel", MouseWheelHandler); //IE 6/7/8
+      wrapper.detachEvent('onmousewheel', MouseWheelHandler); //IE 6/7/8
     }
   }
 
@@ -2104,25 +2105,25 @@ function init(callback) {
     addHandler(
       $(WRAPPER_SEL),
       MouseWheelHandler,
-      "mousewheel",
-      "onmousewheel",
-      "wheel"
+      'mousewheel',
+      'onmousewheel',
+      'wheel'
     );
   }
 
   function addResizeHandler() {
-    addHandler(window, resizeHandler, "resize", "onresize");
+    addHandler(window, resizeHandler, 'resize', 'onresize');
   }
 
   function addScrollHandler() {
-    addHandler(window, scrollHandler, "scroll", "onscroll", "onscroll");
+    addHandler(window, scrollHandler, 'scroll', 'onscroll', 'onscroll');
   }
 
   function addHandler(element, method, normal, oldIE, firefox) {
     if (element.addEventListener) {
       element.addEventListener(normal, method, false); //IE9, Chrome, Safari, Oper
 
-      if (typeof firefox !== "undefined") {
+      if (typeof firefox !== 'undefined') {
         element.addEventListener(firefox, method, false); //Firefox
       }
     } else {
@@ -2140,20 +2141,20 @@ function init(callback) {
         //Microsoft pointers
         var MSPointer = getMSPointer();
 
-        wrapper.removeEventListener("touchstart", touchStartHandler);
+        wrapper.removeEventListener('touchstart', touchStartHandler);
         wrapper.removeEventListener(MSPointer.down, touchStartHandler);
 
-        wrapper.removeEventListener("touchmove", touchMoveHandler);
+        wrapper.removeEventListener('touchmove', touchMoveHandler);
         wrapper.removeEventListener(MSPointer.move, touchMoveHandler);
 
         addListenerMulti(
           wrapper,
-          "touchstart " + MSPointer.down,
+          'touchstart ' + MSPointer.down,
           touchStartHandler
         );
         addListenerMulti(
           wrapper,
-          "touchmove " + MSPointer.move,
+          'touchmove ' + MSPointer.move,
           touchMoveHandler
         );
       }
@@ -2171,10 +2172,10 @@ function init(callback) {
         //Microsoft pointers
         var MSPointer = getMSPointer();
 
-        wrapper.removeEventListener("touchstart", touchStartHandler);
+        wrapper.removeEventListener('touchstart', touchStartHandler);
         wrapper.removeEventListener(MSPointer.down, touchStartHandler);
 
-        wrapper.removeEventListener("touchmove", touchMoveHandler);
+        wrapper.removeEventListener('touchmove', touchMoveHandler);
         wrapper.removeEventListener(MSPointer.move, touchMoveHandler);
       }
     }
@@ -2189,10 +2190,10 @@ function init(callback) {
 
     //IE >= 11 & rest of browsers
     if (window.PointerEvent) {
-      pointer = { down: "pointerdown", move: "pointermove" };
+      pointer = { down: 'pointerdown', move: 'pointermove' };
     } else {
       //IE < 11
-      pointer = { down: "MSPointerDown", move: "MSPointerMove" };
+      pointer = { down: 'MSPointerDown', move: 'MSPointerMove' };
     }
 
     return pointer;
@@ -2205,11 +2206,11 @@ function init(callback) {
     var events = [];
 
     events.y =
-      typeof e.pageY !== "undefined" && (e.pageY || e.pageX)
+      typeof e.pageY !== 'undefined' && (e.pageY || e.pageX)
         ? e.pageY
         : e.touches[0].pageY;
     events.x =
-      typeof e.pageX !== "undefined" && (e.pageY || e.pageX)
+      typeof e.pageX !== 'undefined' && (e.pageY || e.pageX)
         ? e.pageX
         : e.touches[0].pageX;
 
@@ -2223,9 +2224,9 @@ function init(callback) {
   }
 
   function silentLandscapeScroll(activeSlide, noCallbacks) {
-    setScrollingSpeed(0, "internal");
+    setScrollingSpeed(0, 'internal');
 
-    if (typeof noCallbacks !== "undefined") {
+    if (typeof noCallbacks !== 'undefined') {
       //preventing firing callbacks afterSlideLoad etc.
       isResizing = true;
     }
@@ -2237,11 +2238,11 @@ function init(callback) {
 
     landscapeScroll(slides, activeSlide);
 
-    if (typeof noCallbacks !== "undefined") {
+    if (typeof noCallbacks !== 'undefined') {
       isResizing = false;
     }
 
-    setScrollingSpeed(originals.scrollingSpeed, "internal");
+    setScrollingSpeed(originals.scrollingSpeed, 'internal');
   }
 
   function silentScroll(top) {
@@ -2249,18 +2250,18 @@ function init(callback) {
       var scrollSettings = getScrollSettings(top);
       setScrolling(scrollSettings.element, scrollSettings.options, 0);
     } else if (options.css3) {
-      var translate3d = "translate3d(0px, -" + top + "px, 0px)";
+      var translate3d = 'translate3d(0px, -' + top + 'px, 0px)';
       transformContainer(translate3d, false);
     } else {
-      setCss(container, "top", -top + "px");
+      setCss(container, 'top', -top + 'px');
     }
   }
 
   function setTransforms(element, translate3d) {
     css(element, {
-      "-webkit-transform": translate3d,
-      "-moz-transform": translate3d,
-      "-ms-transform": translate3d,
+      '-webkit-transform': translate3d,
+      '-moz-transform': translate3d,
+      '-ms-transform': translate3d,
       transform: translate3d
     });
   }
@@ -2274,7 +2275,7 @@ function init(callback) {
     */
   function setVariableState(variable, value, type) {
     options[variable] = value;
-    if (type !== "internal") {
+    if (type !== 'internal') {
       originals[variable] = value;
     }
   }
@@ -2286,11 +2287,11 @@ function init(callback) {
     //anchors can not have the same value as any element ID or NAME
     for (var i = 0; i < options.anchors.length; i++) {
       var name = options.anchors[i];
-      var existId = getById("#" + name);
+      var existId = getById('#' + name);
       if (existId || $$('[name="' + name + '"]').length) {
         showError(
-          "error",
-          "data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE)."
+          'error',
+          'data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).'
         );
       }
     }
@@ -2300,7 +2301,7 @@ function init(callback) {
    * Shows a message in the console of the given type.
    */
   function showError(type, text) {
-    console && console[type] && console[type]("fullPage: " + text);
+    console && console[type] && console[type]('fullPage: ' + text);
   }
 
   //API
