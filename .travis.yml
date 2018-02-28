@@ -1,9 +1,22 @@
 language: node_js
 node_js:
-  - 8
-cache:
-  directories:
-    - node_modules
+- 8
+#cache:
+ # directories:
+ # - node_modules
 script:
-  - npm run deploy
-  - npm test
+- npm test  
+- npm run deploy
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+addons:
+  sauce_connect: true
+env:
+  global:
+  - SAUCE_USERNAME="lirun3196"
+  - secure: nvoOZsbEfefyWLEXcczho2OLV8B2WOYr2HOeE6jJKkUIhIegwL0HYC6HfOC4e+EqBwS02vddArgpgNpwNVM+zOBl4nTXocaJfOhoesO+NKhThWl97EecLmRLcM+iYOQnUoWtkMoVhuKiS5CgoLPiw6JnaIe7acjePAUBP9NmK9H1g+5a7ZuEwEc92r7/3Ar9x1M3KmUUZ21qsMAychwSFiSNHD+kQGl/dHArFoMC0bmnnKkb5YCuqyQEL5rNK1xjORptqA87TEGPSIvYy6rWvA8B+9Nbr/WXo54xshmEyLWbG4W0KNTEn1WUsroujzqC1DcKgexHkXIRVOWDLVY8wdvLbQovneMPATHBa2yJkqi5UDHUVF/FXvtjIEPcC9rqDVBdUjzaLyYkEgOXVMuuo6fhsSxFYonMJU7UqgiH416ZgK+hXuDVQZMX74HC8o3hOjrjPMmOW7te/ULp58ArPPb3xYYKBwLDrr+ySE7qicAHNi2T3LUmHKHH2ay4XGIZ6W6ONB7aIolwz71S83R1BNfRTq3XBiYIUyGj5UczeXGLupjKPSdFMMypHVFz2tTTvGCPBVWWdI7siUKmWTv3tVJ9Y+QHx0X58Q+Drzf4B5Lb9ZvQruR7Y09x6XbZ7MOTGKPIgqcBggszYlG21nZfaZClfhYZsoIKX/ZNoS5zJPY=
