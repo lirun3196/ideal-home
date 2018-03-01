@@ -4,6 +4,7 @@ import BasePage from './basePage/basePage';
 
 import Balcony from './balcony';
 import LivingRoom from './livingRoom';
+import TestSinglePage from './testSth/testSinglePage.js';
 
 import bathroomData from './bathroom/data.json';
 import bathroomImgPaths from './bathroom/imgPaths.js';
@@ -39,6 +40,7 @@ const Study = () => pageFactory(studyData, studyImgPaths);
 
 export default class Plan extends React.Component {
   //http://jaketrent.com/post/addremove-classes-raw-javascript/
+  //we shouldn't operate DOM in React, I will optimize it.
   hasClass = (ele, cls) => {
     return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
   };
@@ -147,6 +149,7 @@ export default class Plan extends React.Component {
             <Route path="/kitchen" component={Kitchen} />
             <Route path="/study" component={Study} />
             <Route path="/cloakroom" component={Cloakroom} />
+            <Route path="/testSinglePage" component={TestSinglePage} />
           </div>
         </div>
       </Router>
