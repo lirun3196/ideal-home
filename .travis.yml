@@ -1,11 +1,16 @@
 language: node_js
 node_js:
 - 8
-#cache:
- # directories:
- # - node_modules
+cache:
+  directories:
+  - node_modules
 git:
   depth: 5
+before_script:
+  - git config --global user.email "lirun3196@163.com"
+  - git config --global user.name "lirun3196"
+  - git remote rm origin
+  - git remote add origin https://lirun3196:${GITHUB_TOKEN}@github.com/lirun3196/ideal-home.git
 script:
 - npm test  
 - npm run deploy

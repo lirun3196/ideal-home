@@ -27,15 +27,3 @@
   text-align: center;
   line-height: 200px;
 }
-.jobs {
-  display: none;
-}
-.jobs .background {
-  background-image: none;
-}
-.birds-view {
-  display: none;
-}
-.birds-view .background {
-  background-image: none;
-}
