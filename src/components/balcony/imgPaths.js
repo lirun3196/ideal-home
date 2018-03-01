@@ -7,7 +7,7 @@ import img5 from './img/b4.jpg';
 import img6 from './img/b5.jpg';
 import img7 from './img/b6.jpg';
 import img8 from './img/b7.jpg';
-import img9 from './img/b8-l.jpg';
+import img9 from './img/b8.jpg';
 import img10 from './img/b9.jpg';
 
 const imgPaths = [
