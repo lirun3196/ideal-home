@@ -1,0 +1,62 @@
+.response-header {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.response-header .overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 3;
+}
+.response-header .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 30%;
+}
+.content-wrap {
+  height: calc(100vh);
+  min-height: 320px;
+  position: relative;
+  z-index: 10;
+}
+.header-section {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.header-section-copy {
+  margin: 0 auto;
+  padding: 0 2%;
+  display: table-cell;
+  vertical-align: middle;
+  user-select: none;
+}
+.header-section-headline {
+  font-size: 1.8em;
+  text-align: center;
+  max-width: 900px;
+  /* padding: 40px 0; */
+  margin: 0 auto;
+  color: #fff;
+}
+.header-section-headline p {
+  margin: 0;
+  padding: 0;
+}
+.header-section-desc {
+  color: #fff;
+  margin: 0 auto;
+  max-width: 800px;
+}

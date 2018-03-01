@@ -1,0 +1,20 @@
+{
+  "pageTitle":"bathroom",
+  "keyWords": [
+    { "id": 1, "content": "不潮湿" }
+  ],
+  "listItems": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "蹲便器"
+        },
+        { "id": 2, "content": "男士小便器?" },
+        { "id": 3, "content": "干湿分离" },
+        { "id": 4, "content": "面盆旁一定要有足够的空间放洗漱用品" }
+      ],
+      "title": "需求"
+    }
+  ]
+}
