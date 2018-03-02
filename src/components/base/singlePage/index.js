@@ -19,7 +19,7 @@ let options;
 function initialize(e, customOptions, cb) {
   const defaults = {
     scrollingSpeed: 500,
-    touchSensitivity: 10,
+    touchSensitivity: 8,
     onLeave: null,
     scrolling: scrolling,
     afterSectionDown: null,
@@ -164,7 +164,7 @@ function isFunction(functionToCheck) {
 function getAbsoluteHeight(el) {
   // Get the DOM Node if you pass in a string
   el = typeof el === 'string' ? document.querySelector(el) : el;
-  console.log('el:', el);
+  // console.log('el:', el);
   let styles = window.getComputedStyle(el);
   let margin =
     parseFloat(styles['marginTop']) + parseFloat(styles['marginBottom']);
@@ -287,5 +287,6 @@ export default {
   touchStartHandler,
   touchMoveHandler(e, customOptions) {
     initialize(e, customOptions, touchMoveHandler);
-  }
+  },
+  moveSectionUp
 };

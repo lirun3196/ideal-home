@@ -39,6 +39,10 @@ body {
 }
 .flex-wrap .undo {
   text-decoration-line: line-through;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
 }
 .flex-wrap a:focus {
   background-color: #df5e45;

@@ -3,7 +3,12 @@ import debounce from 'lodash/debounce';
 import handlers from './singlePage';
 import './responseFullpage.css';
 
-const { touchStartHandler, touchMoveHandler, mouseWheelHandler } = handlers;
+const {
+  touchStartHandler,
+  touchMoveHandler,
+  mouseWheelHandler,
+  moveSectionUp
+} = handlers;
 
 export default class ResponseFullpage extends React.Component {
   constructor(props) {
@@ -11,6 +16,10 @@ export default class ResponseFullpage extends React.Component {
     this.wheelDebounce = this.debounceFactory(this.wheel);
     this.touchStartDebounce = this.debounceFactory(this.touchStart);
     this.touchMoveDebounce = this.debounceFactory(this.touchMove);
+  }
+  componentDidUpdate(prevProps) {
+    console.log('response prevProps', prevProps);
+    moveSectionUp(this.scrollTarget);
   }
   debounceFactory = f => {
     return debounce(f, 50, {
@@ -34,7 +43,7 @@ export default class ResponseFullpage extends React.Component {
     this.wheelDebounce(event);
   };
   handleTouchStart = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const event = { touches: e.touches, currentTarget: e.currentTarget };
     this.touchStartDebounce(event);
   };
@@ -63,6 +72,9 @@ export default class ResponseFullpage extends React.Component {
         onWheel={this.handleWheel}
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
+        ref={target => {
+          this.scrollTarget = target;
+        }}
       >
         <div className="overlay" />
         <div className="background" />

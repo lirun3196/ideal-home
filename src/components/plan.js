@@ -1,10 +1,10 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
+
 import BasePage from './basePage/basePage';
 
 import Balcony from './balcony';
 import LivingRoom from './livingRoom';
-import TestSinglePage from './testSth/testSinglePage.js';
 
 import bathroomData from './bathroom/data.json';
 import bathroomImgPaths from './bathroom/imgPaths.js';
@@ -41,118 +41,142 @@ const Study = () => pageFactory(studyData, studyImgPaths);
 export default class Plan extends React.Component {
   //http://jaketrent.com/post/addremove-classes-raw-javascript/
   //we shouldn't operate DOM in React, I will optimize it.
-  hasClass = (ele, cls) => {
-    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  constructor(props) {
+    super(props);
+    this.state = {
+      navPageClass: 'birds-view',
+      moveUp: false
+    };
+  }
+  navClick = e => {
+    const event = { currentTarget: e.currentTarget, target: e.target, e };
+    console.log(event);
+    this.setState({
+      moveUp: true
+    });
   };
-  addClass = (element, className) => {
-    element =
-      typeof element === 'string' ? document.querySelector(element) : element;
-    if (element && !this.hasClass(element, className)) {
-      element.className += ' ' + className;
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+    if (prevProps.location.pathname !== prevProps.history.location.pathname) {
+      // window.scrollTo(0,this.contentWrap.offsetTop)
     }
-  };
+  }
   render() {
     let self = this;
-    const navPageClass = 'birds-view';
-    const headerPageClass = 'jobs';
+    const match = this.props.match;
     const fullPageOpt = {
       afterSectionUp() {
-        self.addClass('.' + navPageClass, 'show');
-      },
-      onLeave() {
-        console.log('leaving now');
-        return false;
+        self.state.navPageClass !== 'birds-view show' &&
+          self.setState({
+            navPageClass: 'birds-view show'
+          });
       }
     };
+    const toObjFactory = path => {
+      return {
+        pathname: match.url + '/' + path
+      };
+    };
     return (
-      <Router>
-        <div className="app">
-          <ResponseFullpage class={headerPageClass} fullPageOpt={fullPageOpt}>
-            <div className="header-section-headline">
-              <p>All exists is necessary,</p>
-              <p>necessary must be good</p>
-            </div>
-          </ResponseFullpage>
-          <ResponseFullpage class={navPageClass}>
-            <div className="nav-wrap">
-              <div className="flex-wrap level1">
-                <div className="flex-wrap active-space-wrap">
-                  <div className="flex-wrap balcony-wrap">
-                    <div className="air-space" />
-                    <div className="main-balcony">
-                      <Link to="/balcony">balcony</Link>
-                    </div>
-                  </div>
-                  <div className="living-room">
-                    <Link to="/livingroom">living-room</Link>
-                  </div>
-                  <div className="dining-room undo">
-                    <a href="###">dining-room</a>
-                  </div>
-                </div>
-                <div className="flex-wrap rest-space-wrap">
-                  <div className="flex-wrap bedroom-wrap">
-                    <div className="secondary-bedroom undo">
-                      <a href="###">secondary-bedroom</a>
-                      <div className="cloakroom">
-                        <Link to="/cloakroom">cloakroom</Link>
-                      </div>
-                    </div>
-                    <div className="main-bedroom">
-                      <Link to="/bedroom">main-bedroom</Link>
-                    </div>
-                  </div>
-                  <div className="flex-wrap miscellaneous-wrap">
-                    <div className="flex-wrap miscell-left">
-                      <div className="corridor undo">
-                        <a href="###">corridor</a>
-                      </div>
-                      <div className="flex-wrap study-and-bathroom">
-                        <div className="public-bathroom">
-                          <Link to="/bathroom">public-bathroom</Link>
-                        </div>
-                        <div className="study">
-                          <Link to="/study">study</Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex-wrap miscell-right">
-                      <div className="yard undo">
-                        <a href="###">yard</a>
-                      </div>
-                      <div className="air-space" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-wrap level2">
-                <div className="hallway">
-                  <Link to="/hallway">hallway</Link>
-                </div>
-                <div className="kitchen">
-                  <Link to="/kitchen">kitchen</Link>
-                </div>
-                <div className="live-balcony undo">
-                  <a href="###">live-balcony</a>
-                </div>
-                <div className="air-space" />
-              </div>
-            </div>
-          </ResponseFullpage>
-          <div id="content" name="content">
-            <Route exact path="/" component={LivingRoom} />
-            <Route path="/balcony" component={Balcony} />
-            <Route path="/livingroom" component={LivingRoom} />
-            <Route path="/bathroom" component={Bathroom} />
-            <Route path="/hallway" component={HallWay} />
-            <Route path="/bedroom" component={Bedroom} />
-            <Route path="/kitchen" component={Kitchen} />
-            <Route path="/study" component={Study} />
-            <Route path="/cloakroom" component={Cloakroom} />
-            <Route path="/testSinglePage" component={TestSinglePage} />
+      <div className="app">
+        <ResponseFullpage class={'jobs'} fullPageOpt={fullPageOpt}>
+          <div className="header-section-headline">
+            <p>All exists is necessary,</p>
+            <p>necessary must be good</p>
           </div>
+        </ResponseFullpage>
+        <ResponseFullpage
+          class={this.state.navPageClass}
+          moveUp={this.state.moveUp}
+        >
+          <div className="nav-wrap" onClick={this.navClick}>
+            <div className="flex-wrap level1">
+              <div className="flex-wrap active-space-wrap">
+                <div className="flex-wrap balcony-wrap">
+                  <div className="air-space" />
+                  <div className="main-balcony">
+                    <NavLink to={toObjFactory('balcony')}>balcony</NavLink>
+                  </div>
+                </div>
+                <div className="living-room">
+                  <NavLink to={toObjFactory('livingroom')}>living-room</NavLink>
+                </div>
+                <div className="dining-room undo">
+                  <span>dining-room</span>
+                </div>
+              </div>
+              <div className="flex-wrap rest-space-wrap">
+                <div className="flex-wrap bedroom-wrap">
+                  <div className="secondary-bedroom">
+                    <span>secondary-bedroom</span>
+                    <div className="cloakroom">
+                      <NavLink to={toObjFactory('cloakroom')}>
+                        cloakroom
+                      </NavLink>
+                    </div>
+                  </div>
+                  <div className="main-bedroom">
+                    <NavLink to={toObjFactory('bedroom')}>main-bedroom</NavLink>
+                  </div>
+                </div>
+                <div className="flex-wrap miscellaneous-wrap">
+                  <div className="flex-wrap miscell-left">
+                    <div className="corridor undo">
+                      <span>corridor</span>
+                    </div>
+                    <div className="flex-wrap study-and-bathroom">
+                      <div className="public-bathroom">
+                        <NavLink to={toObjFactory('bathroom')}>
+                          public-bathroom
+                        </NavLink>
+                      </div>
+                      <div className="study">
+                        <NavLink to={toObjFactory('study')}>study</NavLink>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-wrap miscell-right">
+                    <div className="yard undo">
+                      <span>yard</span>
+                    </div>
+                    <div className="air-space" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-wrap level2">
+              <div className="hallway">
+                <NavLink to={toObjFactory('hallway')}>hallway</NavLink>
+              </div>
+              <div className="kitchen">
+                <NavLink to={toObjFactory('kitchen')}>kitchen</NavLink>
+              </div>
+              <div className="live-balcony undo">
+                <span>live-balcony</span>
+              </div>
+              <div className="air-space" />
+            </div>
+          </div>
+        </ResponseFullpage>
+        <div
+          id="content"
+          name="content"
+          ref={content => {
+            this.contentWrap = content;
+          }}
+        >
+          <Route exact path={match.url} component={Balcony} />
+          <Route path={`${match.url}/balcony`} component={Balcony} />
+          <Route path={`${match.url}/livingroom`} component={LivingRoom} />
+          <Route path={`${match.url}/bathroom`} component={Bathroom} />
+          <Route path={`${match.url}/hallway`} component={HallWay} />
+          <Route path={`${match.url}/bedroom`} component={Bedroom} />
+          <Route path={`${match.url}/kitchen`} component={Kitchen} />
+          <Route path={`${match.url}/study`} component={Study} />
+          <Route path={`${match.url}/cloakroom`} component={Cloakroom} />
         </div>
-      </Router>
+      </div>
     );
   }
 }

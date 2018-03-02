@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import Plan from './components/plan';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return <Plan />;
-  }
+function App(props) {
+  return <React.Fragment>{props.children}</React.Fragment>;
 }
 
 export default App;
