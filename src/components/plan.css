@@ -134,7 +134,21 @@ body {
   flex: 4;
 }
 .secondary-bedroom {
+  display: flex;
+  flex-flow: column wrap;
   flex: 5;
+}
+.secondary-bedroom span {
+  flex: 3;
+  text-decoration-line: line-through;
+  cursor: not-allowed;
+}
+.nav-wrap .cloakroom {
+  flex: 1;
+  width: 70%;
+  margin-left: 30%;
+  border-right: none;
+  border-bottom: none;
 }
 .main-bedroom {
   flex: 6;

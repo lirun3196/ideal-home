@@ -40,7 +40,6 @@ const Study = () => pageFactory(studyData, studyImgPaths);
 
 export default class Plan extends React.Component {
   //http://jaketrent.com/post/addremove-classes-raw-javascript/
-  //we shouldn't operate DOM in React, I will optimize it.
   constructor(props) {
     super(props);
     this.state = {

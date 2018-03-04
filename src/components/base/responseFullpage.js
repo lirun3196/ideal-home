@@ -7,7 +7,8 @@ const {
   touchStartHandler,
   touchMoveHandler,
   mouseWheelHandler,
-  moveSectionUp
+  moveSectionUp,
+  moveSectionDown
 } = handlers;
 
 export default class ResponseFullpage extends React.Component {
@@ -17,9 +18,16 @@ export default class ResponseFullpage extends React.Component {
     this.touchStartDebounce = this.debounceFactory(this.touchStart);
     this.touchMoveDebounce = this.debounceFactory(this.touchMove);
   }
-  componentDidUpdate(prevProps) {
-    console.log('response prevProps', prevProps);
-    moveSectionUp(this.scrollTarget);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.moveUp && nextProps.moveDown) {
+      return;
+    }
+    if (nextProps.moveUp) {
+      moveSectionUp(this.scrollTarget);
+    }
+    if (nextProps.moveDown) {
+      moveSectionDown(this.scrollTarget);
+    }
   }
   debounceFactory = f => {
     return debounce(f, 50, {

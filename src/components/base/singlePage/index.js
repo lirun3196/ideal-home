@@ -288,5 +288,6 @@ export default {
   touchMoveHandler(e, customOptions) {
     initialize(e, customOptions, touchMoveHandler);
   },
-  moveSectionUp
+  moveSectionUp,
+  moveSectionDown
 };
