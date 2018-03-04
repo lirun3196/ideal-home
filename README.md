@@ -17,7 +17,7 @@ Inspired by experience. I have thought out a way to get over it. Using node.js c
 An example:
 
 ```sh
-yarn img <jsPth> <imgPath> <fileName>
+yarn imgPaths <jsPth> <imgPath> <fileName>
 ```
 
 ```sh

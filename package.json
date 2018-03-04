@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "img": "node automate/imgPaths.js"
+    "imgPaths": "node automate/imgPaths.js"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [

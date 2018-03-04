@@ -54,13 +54,13 @@ export default class Plan extends React.Component {
       moveUp: true
     });
   };
-  componentDidUpdate(prevProps, prevState) {
+  /* componentDidUpdate(prevProps, prevState) {
     console.log('prevProps', prevProps);
     console.log('prevState', prevState);
     if (prevProps.location.pathname !== prevProps.history.location.pathname) {
       // window.scrollTo(0,this.contentWrap.offsetTop)
     }
-  }
+  } */
   render() {
     let self = this;
     const match = this.props.match;
