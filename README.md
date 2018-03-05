@@ -1,6 +1,6 @@
 # ideal-home
 
-## Create an ideal home for both body and soul
+Create an ideal home for both body and soul
 
 ---
 
@@ -35,7 +35,7 @@ there is a default prefix path 'src/components/' in the [implemented code](https
 
 ```sh
 # execute under 'my-project' path
-yarn img balcony
+yarn imgPaths balcony
 ```
 
 It will create a file named `imgPaths.js` in the balcony folder:

@@ -51,7 +51,8 @@ const util = {
     if (!shell.test('-f', filename)) {
       shell.touch(filename)
     }
-    shell.ShellString(fileContent).toEnd(filename)
+    //to() will overwrite any existing file
+    shell.ShellString(fileContent).to(filename)
   },
   execFun(fun){
     if(typeof fun !== 'function'){

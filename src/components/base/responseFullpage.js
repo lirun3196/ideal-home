@@ -56,7 +56,6 @@ export default class ResponseFullpage extends React.Component {
     this.touchStartDebounce(event);
   };
   handleTouchMove = e => {
-    e.preventDefault();
     const event = { touches: e.touches, currentTarget: e.currentTarget };
     this.touchMoveDebounce(event);
   };
