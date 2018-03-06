@@ -231,8 +231,7 @@ function touchStartHandler(event) {
 }
 
 function touchMoveHandler(e, options) {
-  e.preventDefault();
-  console.log('touch move');
+  // console.log('touch move');
   if (canScroll) {
     //if theres any #
     let touchEvents = getEventsPage(e);
