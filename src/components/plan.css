@@ -1,4 +1,7 @@
 body {
+  -webkit-overflow-scrolling: touch; /* iOS velocity scrolling */
+}
+body {
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: #333;
@@ -39,6 +42,10 @@ body {
 }
 .flex-wrap .undo {
   text-decoration-line: line-through;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
 }
 .flex-wrap a:focus {
   background-color: #df5e45;
@@ -130,7 +137,21 @@ body {
   flex: 4;
 }
 .secondary-bedroom {
+  display: flex;
+  flex-flow: column wrap;
   flex: 5;
+}
+.secondary-bedroom span {
+  flex: 3;
+  text-decoration-line: line-through;
+  cursor: not-allowed;
+}
+.nav-wrap .cloakroom {
+  flex: 1;
+  width: 70%;
+  margin-left: 30%;
+  border-right: none;
+  border-bottom: none;
 }
 .main-bedroom {
   flex: 6;

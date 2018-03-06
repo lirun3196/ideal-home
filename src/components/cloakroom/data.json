@@ -1,18 +1,15 @@
 {
-    "pageTitle":"cloakroom",
-    "keyWords": [
-      { "id": 1, "content": "" }
-    ],
-    "listItems": [
-      {
-        "items": [
-          {
-            "id": 1,
-            "content": "还没啥想法"
-          }
-        ],
-        "title": "需求"
-      }
-    ]
-  }
-  
+  "pageTitle": "cloakroom",
+  "keyWords": [{ "id": 1, "content": "顺手" }],
+  "listItems": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "还没啥想法"
+        }
+      ],
+      "title": "需求"
+    }
+  ]
+}
