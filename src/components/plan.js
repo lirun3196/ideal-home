@@ -47,9 +47,14 @@ export default class Plan extends React.Component {
       moveUp: false
     };
   }
+  componentDidMount() {
+    this.setState({
+      navPageClass: 'birds-view show'
+    });
+  }
   navClick = e => {
-    const event = { currentTarget: e.currentTarget, target: e.target, e };
-    console.log(event);
+    // const event = { currentTarget: e.currentTarget, target: e.target, e };
+    // console.log(event);
     this.setState({
       moveUp: true
     });
@@ -62,16 +67,16 @@ export default class Plan extends React.Component {
     }
   } */
   render() {
-    let self = this;
+    // let self = this;
     const match = this.props.match;
-    const fullPageOpt = {
+    /* const fullPageOpt = {
       afterSectionUp() {
         self.state.navPageClass !== 'birds-view show' &&
           self.setState({
             navPageClass: 'birds-view show'
           });
       }
-    };
+    }; */
     const toObjFactory = path => {
       return {
         pathname: match.url + '/' + path
@@ -79,15 +84,16 @@ export default class Plan extends React.Component {
     };
     return (
       <div className="app">
-        <ResponseFullpage class={'jobs'} fullPageOpt={fullPageOpt}>
+        {/* <ResponseFullpage class={'jobs'} fullPageOpt={fullPageOpt}>
           <div className="header-section-headline">
             <p>All exists is necessary,</p>
             <p>necessary must be good</p>
           </div>
-        </ResponseFullpage>
+        </ResponseFullpage> */}
         <ResponseFullpage
           class={this.state.navPageClass}
           moveUp={this.state.moveUp}
+          autoScroll={true}
         >
           <div className="nav-wrap" onClick={this.navClick}>
             <div className="flex-wrap level1">

@@ -63,7 +63,12 @@ export default class ResponseFullpage extends React.Component {
   render() {
     if (this.props.autoScroll) {
       return (
-        <div className={'response-header ' + this.props.class}>
+        <div
+          className={'response-header ' + this.props.class}
+          ref={target => {
+            this.scrollTarget = target;
+          }}
+        >
           <div className="overlay" />
           <div className="background" />
           <div className="content-wrap">

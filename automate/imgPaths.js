@@ -2,7 +2,7 @@
  * @author Rich Lee
  * @time 27/02/2018 15:05
  * @abstract  create import-all-images-in-a-direction file
- * example: node automate/importImgs.js <js-path-depend-on-defaultPathPrefix>
+ * e.g: node automate/importImgs.js <js-path-depend-on-defaultPathPrefix>
  */
 const shell = require("shelljs");
 // const inquirer = require("inquirer");
@@ -14,7 +14,7 @@ const util = require("./util");
 //process.argv[3]: defaultImgPath
 //process.argv[4]: defaultFilename
 
-const defaultPathPrefix = 'src/components/'
+const defaultPathPrefix = process.argv[3] || 'src/components/'
 const defaultFilename = (process.argv[4] || 'imgPaths') + '.js' 
 
 console.log(process.argv[2])

@@ -6,6 +6,7 @@ Create an ideal home for both body and soul
 
 [![Build Status](https://travis-ci.org/lirun3196/ideal-home.svg?branch=master)](https://travis-ci.org/lirun3196/ideal-home)
 [![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Adding Images, Files in batches
 
@@ -63,7 +64,6 @@ This component have some problems to be solve:
 
 * it's not a standalone component
 * the `scroll flicker` between the normal scroll sction and fullpage section because of `inertial scrolling` of the browser, especially in mobile browser.
-* Browser support: incompatibility with IE because of [Flex](https://caniuse.com/#search=flex)
 
 ---
 

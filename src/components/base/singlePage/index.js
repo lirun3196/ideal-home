@@ -6,7 +6,14 @@
  */
 
 let canScroll = true;
-let options;
+let options = {
+  scrollingSpeed: 500,
+  touchSensitivity: 8,
+  onLeave: null,
+  scrolling: scrolling,
+  afterSectionDown: null,
+  afterSectionUp: null
+};
 
 /**
  * @description Detecting mousewheel scrolling
@@ -17,15 +24,7 @@ let options;
  * http://www.sitepoint.com/html5-javascript-mouse-wheel/
  */
 function initialize(e, customOptions, cb) {
-  const defaults = {
-    scrollingSpeed: 500,
-    touchSensitivity: 8,
-    onLeave: null,
-    scrolling: scrolling,
-    afterSectionDown: null,
-    afterSectionUp: null
-  };
-  options = Object.assign({}, defaults, customOptions || {});
+  options = Object.assign(options, customOptions || {});
   cb(e, options);
 }
 
@@ -34,7 +33,7 @@ function initialize(e, customOptions, cb) {
  * by 'automatically' scrolling a section or by using the default and normal scrolling.
  */
 function scrolling(type, element, cb) {
-  console.log('type-', type);
+  // console.log('type-', type);
   if (type === 'down') {
     moveSectionDown(element, cb);
   } else {
