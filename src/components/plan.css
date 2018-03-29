@@ -1,11 +1,3 @@
-body {
-  -webkit-overflow-scrolling: touch; /* iOS velocity scrolling */
-}
-body {
-  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
-}
 .app {
   transition: transform 0.5s ease;
 }

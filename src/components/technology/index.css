@@ -1,0 +1,27 @@
+.tech {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tech dl {
+  margin: 2em 0;
+}
+.tech dt {
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+.tech dd {
+  margin-left: 0;
+}
+.tech dd.notice {
+  background: #fff3d4;
+  border-color: #f6b73c;
+  font-size: 1rem;
+  border-left-width: 5px;
+  border-left-style: solid;
+  padding: 10px;
+  margin: 10px 0;
+}
+.component-list-item a:visited {
+  color: #333;
+}

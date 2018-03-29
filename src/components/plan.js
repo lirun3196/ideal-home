@@ -77,11 +77,9 @@ export default class Plan extends React.Component {
           });
       }
     }; */
-    const toObjFactory = path => {
-      return {
-        pathname: match.url + '/' + path
-      };
-    };
+    const toObjFactory = path => ({
+      pathname: match.url + '/' + path
+    });
     return (
       <div className="app">
         {/* <ResponseFullpage class={'jobs'} fullPageOpt={fullPageOpt}>

@@ -1,0 +1,68 @@
+{
+  "pageTitle": "Event System",
+  "keyWords": [
+    { "id": 1, "content": "event" },
+    { "id": 2, "content": "react" },
+    { "id": 3, "content": "jQuery" },
+    { "id": 4, "content": "DOM" },
+    { "id": 5, "content": "UI Events" },
+    { "id": 6, "content": "webpack" }
+  ],
+  "linkListItems": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "React doc link",
+          "link": "https://reactjs.org/docs/codebase-overview.html#event-system"
+        },
+        {
+          "id": 2,
+          "content": "React event source code",
+          "link":
+            "https://github.com/facebook/react/tree/master/packages/events"
+        },
+        {
+          "id": 3,
+          "content": "DOM-Level-3-Events",
+          "link": "http://www.w3.org/TR/DOM-Level-3-Events/"
+        },
+        {
+          "id": 4,
+          "content": "Event object defined in whatwg",
+          "link": "https://dom.spec.whatwg.org/#event"
+        },
+        {
+          "id": 5,
+          "content": "CustomEvent",
+          "link":
+            "https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent"
+        }
+      ],
+      "title": "Referrers"
+    }
+  ],
+  "reactQues": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "how the Synthetic Event system be done?"
+        },
+        {
+          "id": 2,
+          "content": "the way to listen to"
+        },
+        {
+          "id": 3,
+          "content": "the way to trigger"
+        },
+        {
+          "id": 4,
+          "content": "how compose with React"
+        }
+      ],
+      "title": "Questions"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "pageTitle": "function",
+  "keyWords": [
+    { "id": 1, "content": "function" },
+    { "id": 2, "content": "closure" },
+    { "id": 3, "content": "arguments" },
+    { "id": 4, "content": "this" },
+    { "id": 5, "content": "anonymous" },
+    { "id": 6, "content": "recursion" }
+  ],
+  "linkListItems": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "React doc link",
+          "link": "https://reactjs.org/docs/codebase-overview.html#event-system"
+        },
+        {
+          "id": 2,
+          "content": "React event source code",
+          "link":
+            "https://github.com/facebook/react/tree/master/packages/events"
+        },
+        {
+          "id": 3,
+          "content": "DOM-Level-3-Events",
+          "link": "http://www.w3.org/TR/DOM-Level-3-Events/"
+        },
+        {
+          "id": 4,
+          "content": "Event object defined in whatwg",
+          "link": "https://dom.spec.whatwg.org/#event"
+        },
+        {
+          "id": 5,
+          "content": "CustomEvent",
+          "link":
+            "https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent"
+        }
+      ],
+      "title": "Referrers"
+    }
+  ]
+}
