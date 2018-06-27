@@ -25,7 +25,7 @@ import studyData from './study/data.json';
 import studyImgPaths from './study/imgPaths';
 
 import ResponseFullpage from './base/responseFullpage';
-import './plan.css';
+import './detail.css';
 
 const pageFactory = (data, imgPaths) => (
   <BasePage data={data} sliders={[{ paths: imgPaths }]} />
@@ -38,25 +38,25 @@ const HallWay = () => pageFactory(hallWayData, hallWayImgPaths);
 const Kitchen = () => pageFactory(kitchenData, KitchenImgPaths);
 const Study = () => pageFactory(studyData, studyImgPaths);
 
-export default class Plan extends React.Component {
+export default class ApartmentDetail extends React.Component {
   //http://jaketrent.com/post/addremove-classes-raw-javascript/
   constructor(props) {
     super(props);
     this.state = {
       navPageClass: 'birds-view',
-      moveUp: false
+      moveUp: false,
     };
   }
   componentDidMount() {
     this.setState({
-      navPageClass: 'birds-view show'
+      navPageClass: 'birds-view show',
     });
   }
   navClick = e => {
     // const event = { currentTarget: e.currentTarget, target: e.target, e };
     // console.log(event);
     this.setState({
-      moveUp: true
+      moveUp: true,
     });
   };
   /* componentDidUpdate(prevProps, prevState) {
@@ -78,7 +78,7 @@ export default class Plan extends React.Component {
       }
     }; */
     const toObjFactory = path => ({
-      pathname: match.url + '/' + path
+      pathname: match.url + '/' + path,
     });
     return (
       <div className="app">
@@ -134,14 +134,14 @@ export default class Plan extends React.Component {
                           public-bathroom
                         </NavLink>
                       </div>
-                      <div className="study">
-                        <NavLink to={toObjFactory('study')}>study</NavLink>
+                      <div className="study undo">
+                        <span>secondary-bedroom</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex-wrap miscell-right">
-                    <div className="yard undo">
-                      <span>yard</span>
+                    <div className="yard">
+                      <NavLink to={toObjFactory('study')}>study</NavLink>
                     </div>
                     <div className="air-space" />
                   </div>

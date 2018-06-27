@@ -9,7 +9,7 @@ export default function SliderImg(props) {
     speed: 200,
     slidesToShow: 1,
     slidesToScroll: 1 /* ,
-    adaptiveHeight: true */
+    adaptiveHeight: true */,
   };
   const paths = props.paths.slice();
   // console.log(paths);
@@ -17,13 +17,17 @@ export default function SliderImg(props) {
   return (
     <div>
       {props.describe && <h3 className="slider-describe">{props.describe}</h3>}
-      <Slider settings={settings}>
-        {paths.map((item, index) => (
-          <div key={index}>
-            <img src={item} alt=" " />
-          </div>
-        ))}
-      </Slider>
+      {paths.length === 1 ? (
+        <img src={paths[0]} alt="" className="slide-lonely" />
+      ) : (
+        <Slider settings={settings}>
+          {paths.map((item, index) => (
+            <div key={index}>
+              <img src={item} alt=" " />
+            </div>
+          ))}
+        </Slider>
+      )}
     </div>
   );
 }

@@ -1,20 +1,17 @@
 {
-    "pageTitle":"study",
-    "keyWords": [
-      { "id": 1, "content": "安静" },
-      { "id": 2, "content": "多功能" }
-    ],
-    "listItems": [
-      {
-        "items": [
-          {
-            "id": 1,
-            "content": " 隔音(有时听到很有感觉的歌，想肆无忌惮的唱出来；一个注意力周期内，思路不想被打断)"
-          },
-          { "id": 2, "content": "能容纳2人一起办公，并且是坐在人体工学椅上，所以没把院管、衣帽间弄成小书房" }
-        ],
-        "title": "需求"
-      }
-    ]
-  }
-  
+  "pageTitle": "study",
+  "keyWords": [{ "id": 1, "content": "安静" }],
+  "listItems": [
+    {
+      "items": [
+        {
+          "content": "隔音!隔音!隔音!"
+        },
+        {
+          "content": "玻璃门,落地窗"
+        }
+      ],
+      "title": "需求"
+    }
+  ]
+}

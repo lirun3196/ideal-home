@@ -1,0 +1,52 @@
+{
+  "pageTitle": "概述",
+  "keyWords": ["光", "声", "色", "景"],
+  "listItems": [
+    {
+      "items": [
+        {
+          "content": "阳光: 东西朝向"
+        },
+        {
+          "content": "环境反射光: 对面大楼"
+        },
+        {
+          "content": "轮廓光源"
+        },
+        {
+          "content": "间接光源"
+        },
+        {
+          "content": "焦点光源"
+        }
+      ],
+      "title": "光"
+    },
+    {
+      "items": [
+        {
+          "content": "环境噪音: 装修, 车流, 人流, 商家活动"
+        },
+        {
+          "content": "客厅音箱系统"
+        }
+      ],
+      "title": "声"
+    },
+    {
+      "items": [],
+      "title": "色"
+    },
+    {
+      "items": [
+        {
+          "content": "江景"
+        },
+        {
+          "content": "老街"
+        }
+      ],
+      "title": "景"
+    }
+  ]
+}

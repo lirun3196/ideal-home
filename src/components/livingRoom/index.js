@@ -6,8 +6,8 @@ import data from './data.json';
 
 export default function LivingRoom() {
   const sliders = [
-    { paths: imgPathsLike, describe: 'Like:' },
-    { paths: imgPathsDiss, describe: 'Diss:' }
+    { paths: imgPathsLike, describe: '简洁:' },
+    { paths: imgPathsDiss, describe: '简陋:' },
   ];
   return <BasePage data={data} sliders={sliders} />;
 }

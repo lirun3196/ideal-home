@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import TechEvent from './js/event';
 import TechObject from './js/object';
 import TechFunction from './js/function';
+import Statement from './js/statement-expression';
 import './index.css';
 
 export default class Tech extends React.Component {
@@ -27,13 +28,7 @@ export default class Tech extends React.Component {
           <Route path={`${match.url}/event`} component={TechEvent} />
           <Route path={`${match.url}/object`} component={TechObject} />
           <Route path={`${match.url}/function`} component={TechFunction} />
-          {/* 
-          <Route path={`${match.url}/bathroom`} component={Bathroom} />
-          <Route path={`${match.url}/hallway`} component={HallWay} />
-          <Route path={`${match.url}/bedroom`} component={Bedroom} />
-          <Route path={`${match.url}/kitchen`} component={Kitchen} />
-          <Route path={`${match.url}/study`} component={Study} />
-          <Route path={`${match.url}/cloakroom`} component={Cloakroom} /> */}
+          <Route path={`${match.url}/statement`} component={Statement} />
         </div>
       </div>
     );
