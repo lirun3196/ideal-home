@@ -12,7 +12,7 @@ let options = {
   onLeave: null,
   scrolling: scrolling,
   afterSectionDown: null,
-  afterSectionUp: null
+  afterSectionUp: null,
 };
 
 /**
@@ -99,7 +99,7 @@ function scrollTo(element, to, duration, callback) {
   options.canScroll = false;
   const v = {
     callback: callback,
-    element: element
+    element: element,
   };
   isFunction(options.onLeave) && options.onLeave.call(v);
   let start = scrollHeight;
@@ -289,5 +289,5 @@ export default {
     initialize(e, customOptions, touchMoveHandler);
   },
   moveSectionUp,
-  moveSectionDown
+  moveSectionDown,
 };

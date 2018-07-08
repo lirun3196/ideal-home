@@ -24,7 +24,7 @@ import KitchenImgPaths from './kitchen/imgPaths.js';
 import studyData from './study/data.json';
 import studyImgPaths from './study/imgPaths';
 
-import ResponseFullpage from './base/responseFullpage';
+import ResponseFullpage from './baseComponents/responseFullpage';
 import './detail.css';
 
 const pageFactory = (data, imgPaths) => (

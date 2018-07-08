@@ -4,12 +4,12 @@ import './slider.css';
 
 export default function SliderImg(props) {
   const defaultSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 200,
     slidesToShow: 1,
-    slidesToScroll: 1 /* ,
-    adaptiveHeight: true */,
+    slidesToScroll: 1,
+    adaptiveHeight: false,
   };
   const paths = props.paths.slice();
   // console.log(paths);

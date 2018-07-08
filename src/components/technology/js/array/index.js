@@ -1,9 +1,9 @@
 import React from 'react';
 import { Highlighter } from '../../utils/highlighter';
 
-import ListItem from '../../../base/listItem';
-import PageTitle from '../../../base/pageTitle';
-import WordsList from '../../../base/keywordsList';
+import ListItem from '../../../baseComponents/listItem';
+import PageTitle from '../../../baseComponents/pageTitle';
+import WordsList from '../../../baseComponents/keywordsList';
 import eventData from './data.json';
 
 export default function TechEvent(props) {

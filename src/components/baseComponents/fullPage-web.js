@@ -147,7 +147,7 @@
       afterResize: null,
       afterReBuild: null,
       afterSlideLoad: null,
-      onSlideLeave: null
+      onSlideLeave: null,
     };
 
     options = extend(defaults, customOptions);
@@ -195,7 +195,7 @@
     if (container !== null) {
       css(container, {
         height: '100%',
-        position: 'relative'
+        position: 'relative',
       });
 
       //adding a class to recognize the container internally in the code
@@ -667,12 +667,12 @@
     if (options.autoScrolling && !options.scrollBar) {
       css(document.body, {
         overflow: 'hidden',
-        height: '100%'
+        height: '100%',
       });
 
       css(getByTag('html'), {
         overflow: 'hidden',
-        height: '100%'
+        height: '100%',
       });
 
       setRecordHistory(options.recordHistory, 'internal');
@@ -680,7 +680,7 @@
       //for IE touch devices
       css(container, {
         '-ms-touch-action': 'none',
-        'touch-action': 'none'
+        'touch-action': 'none',
       });
 
       if (element) {
@@ -690,12 +690,12 @@
     } else {
       css(document.body, {
         overflow: 'visible',
-        height: '100%'
+        height: '100%',
       });
 
       css(getByTag('html'), {
         overflow: 'visible',
-        height: '100%'
+        height: '100%',
       });
 
       setRecordHistory(false, 'internal');
@@ -703,7 +703,7 @@
       //for IE touch devices
       css(container, {
         '-ms-touch-action': '',
-        'touch-action': ''
+        'touch-action': '',
       });
 
       silentScroll(0);
@@ -1317,7 +1317,7 @@
       activeSection: $(SECTION_ACTIVE_SEL),
       leavingSection: getNodeIndex($(SECTION_ACTIVE_SEL)) + 1, //caching the value of isResizing at the momment the function is called
       //because it will be checked later inside a setTimeout and the value might change
-      localIsResizing: isResizing
+      localIsResizing: isResizing,
     };
 
     //quiting when destination scroll is the same as the current one
@@ -1764,7 +1764,7 @@
 
     css(element, {
       '-webkit-transition': transition,
-      transition: transition
+      transition: transition,
     });
 
     return element;
@@ -2064,7 +2064,7 @@
         OTransform: '-o-transform',
         msTransform: '-ms-transform',
         MozTransform: '-moz-transform',
-        transform: 'transform'
+        transform: 'transform',
       };
 
     // Add it to the body to get the computed style.
@@ -2262,7 +2262,7 @@
       '-webkit-transform': translate3d,
       '-moz-transform': translate3d,
       '-ms-transform': translate3d,
-      transform: translate3d
+      transform: translate3d,
     });
   }
 
@@ -2317,7 +2317,7 @@
     setFitToSection: setFitToSection,
     setKeyboardScrolling: setKeyboardScrolling,
     setRecordHistory: setRecordHistory,
-    setScrollingSpeed: setScrollingSpeed
+    setScrollingSpeed: setScrollingSpeed,
   };
 
   return fullpage;

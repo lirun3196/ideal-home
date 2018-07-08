@@ -1,8 +1,8 @@
 import React from 'react';
-import PageTitle from '../base/pageTitle';
-import WordsList from '../base/keywordsList';
-import SlideImg from '../base/slider/slideImg';
-import ListItem from '../base/listItem';
+import PageTitle from '../baseComponents/pageTitle';
+import WordsList from '../baseComponents/keywordsList';
+import SlideImg from '../baseComponents/slider/slideImg';
+import ListItem from '../baseComponents/listItem';
 import './basePage.css';
 
 export default function BasePage(props) {

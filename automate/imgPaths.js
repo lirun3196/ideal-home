@@ -35,9 +35,7 @@ const initApi = {
     return `
 ${importStrInitArr.join(';\n')};
 
-const imgPaths = [${varArr}];
-
-export default imgPaths;
+export default [${varArr}];
     `;
   },
   createApi(obj) {

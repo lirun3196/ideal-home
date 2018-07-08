@@ -8,7 +8,7 @@ const {
   touchMoveHandler,
   mouseWheelHandler,
   moveSectionUp,
-  moveSectionDown
+  moveSectionDown,
 } = handlers;
 
 export default class ResponseFullpage extends React.Component {
@@ -32,7 +32,7 @@ export default class ResponseFullpage extends React.Component {
   debounceFactory = f => {
     return debounce(f, 50, {
       leading: true,
-      trailing: false
+      trailing: false,
     });
   };
   wheel = e => {

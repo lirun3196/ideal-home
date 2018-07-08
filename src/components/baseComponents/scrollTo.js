@@ -17,7 +17,7 @@ function scrollTo(element, to, duration, callback) {
   options.canScroll = false;
   const v = {
     callback: callback,
-    element: element
+    element: element,
   };
   isFunction(options.onLeave) && options.onLeave.call(v);
   let start = scrollHeight;
