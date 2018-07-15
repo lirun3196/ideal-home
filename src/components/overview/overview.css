@@ -1,0 +1,19 @@
+.detail-link {
+  width: 100%;
+  color: #fff;
+  padding: 5px;
+  margin: 40px 0;
+  text-align: center;
+  font-size: 16px;
+  background-color: #42a3fd;
+  border: 1px solid transparent;
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.detail-link:hover {
+  background-color: #57aaf7;
+}
+.detail-link:active {
+  color: #42a3fd;
+}

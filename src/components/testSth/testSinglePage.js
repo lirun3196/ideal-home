@@ -1,5 +1,5 @@
 import React from 'react';
-import ResponseFullpage from '../base/responseFullpage';
+import ResponseFullpage from '../baseComponents/responseFullpage';
 import './testSinglePage.css';
 
 export default function Plan() {
@@ -9,7 +9,7 @@ export default function Plan() {
     },
     onLeave() {
       console.log('leaving now');
-    }
+    },
   };
   return (
     <div className="app">

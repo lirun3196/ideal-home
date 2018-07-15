@@ -1,13 +1,23 @@
 import React from 'react';
 import BasePage from '../basePage/basePage';
-import imgPathsDiss from './imgPathsDiss';
-import imgPathsLike from './imgPathsLike';
+import ImageDescribe from '../baseComponents/imageDescribe';
+import imgPaths from './imgPaths';
 import data from './data.json';
 
 export default function LivingRoom() {
-  const sliders = [
-    { paths: imgPathsLike, describe: 'Like:' },
-    { paths: imgPathsDiss, describe: 'Diss:' }
+  const desc = [
+    '留白太多，色彩对比太强烈',
+    '简陋感',
+    '适当留白，颜色温馨，墙画和风格很搭',
+    '暖色，间接光，有型的沙发(并不实用)',
   ];
-  return <BasePage data={data} sliders={sliders} />;
+  const descArr = desc.map((item, index) => ({
+    path: imgPaths[index],
+    title: item,
+  }));
+  return (
+    <BasePage data={data}>
+      <ImageDescribe describe={descArr} />
+    </BasePage>
+  );
 }

@@ -1,0 +1,251 @@
+.app {
+  transition: transform 0.5s ease;
+}
+.nav-wrap {
+  display: inline-flex;
+  flex-flow: column wrap;
+  border: 1px solid #e2e2e2;
+  min-height: 300px;
+  max-width: 500px;
+  width: 95%;
+  opacity: 0.85;
+  transition: all 0.8s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transform: translate3d(0, 1550px, -199px) rotateX(90deg);
+  /* margin: 60px auto 0; */
+}
+.nav-wrap div {
+  background-color: #dd7e6b;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #e2e2e2;
+  box-sizing: border-box;
+}
+.nav-wrap .flex-wrap {
+  border: none;
+}
+.flex-wrap a {
+  text-decoration-line: none;
+  color: #fff;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.flex-wrap .undo {
+  text-decoration-line: line-through;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+}
+.flex-wrap a:focus {
+  background-color: #df5e45;
+  text-decoration-line: none;
+}
+.flex-wrap a:visited {
+  text-decoration-line: none;
+}
+.nav-wrap .air-space {
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+.jobs .background {
+  background-image: url('./plan-img/header-Jobs-375.jpg');
+}
+.birds-view {
+  perspective: 800px;
+}
+.birds-view .background {
+  background-image: url('./plan-img/nav-bg-375x2.jpg');
+}
+.jobs .overlay,
+.birds-view .overlay {
+  background: radial-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(68, 63, 63, 0.11) 35%,
+      black
+    )
+    transparent;
+  background-color: transparent;
+}
+@keyframes show {
+  0% {
+    transform: translate3d(0, 1550px, -13999px) rotateX(90deg);
+  }
+  25% {
+    transform: translate3d(0, 750px, -13999px) rotateX(80deg);
+  }
+  50% {
+    transform: translate3d(0, 450px, -10999px) rotateX(70deg);
+  }
+  75% {
+    transform: translate3d(0, 150px, -4999px) rotateX(30deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+  }
+}
+.birds-view.show .nav-wrap {
+  animation: show 0.8s 1 forwards linear;
+}
+.level1,
+.level2 {
+  display: flex;
+}
+.level1 {
+  flex: 5;
+}
+.level2 {
+  flex: 1;
+}
+.corridor {
+  flex: 1;
+}
+.kitchen {
+  flex: 5;
+}
+.live-balcony {
+  flex: 3;
+}
+.level2 .air-space {
+  flex: 4;
+}
+.active-space-wrap {
+  display: flex;
+  flex: 2;
+  flex-flow: column wrap;
+}
+.rest-space-wrap {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 3;
+}
+.bedroom-wrap,
+.miscellaneous-wrap {
+  display: flex;
+}
+.bedroom-wrap {
+  flex: 4;
+}
+.secondary-bedroom {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 5;
+}
+.secondary-bedroom span {
+  flex: 3;
+  text-decoration-line: line-through;
+  cursor: not-allowed;
+}
+.nav-wrap .cloakroom {
+  flex: 1;
+  width: 70%;
+  margin-left: 30%;
+  border-right: none;
+  border-bottom: none;
+}
+.main-bedroom {
+  flex: 6;
+}
+.miscellaneous-wrap {
+  flex: 5;
+}
+.miscell-left {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 5;
+}
+.miscell-right {
+  flex: 3;
+  display: flex;
+  flex-flow: column wrap;
+}
+.yard {
+  flex: 5;
+}
+.miscell-right .air-space {
+  flex: 6;
+}
+.balcony-wrap {
+  display: flex;
+  flex: 1;
+}
+.balcony-wrap .air-space {
+  flex: 1;
+}
+.main-balcony {
+  flex: 12;
+}
+.living-room {
+  flex: 4;
+}
+.dining-room {
+  flex: 3;
+}
+.hallway {
+  flex: 2;
+}
+.study-and-bathroom {
+  display: flex;
+  flex: 5;
+}
+.public-bathroom {
+  flex: 4;
+}
+.study {
+  flex: 5;
+}
+
+/* @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    .main #section-heroes .unit-image-wrapper .unit-image.image-size-static.unit-image-iphone-x-iphone-x {
+        background-image:url("https://images.apple.com/v/home/dn/images/heroes/iphone-x/iphone_x_large_2x.jpg")
+    }
+} */
+
+/* part of Android phone */
+@media only screen and (min-width: 376px) {
+  .jobs .background {
+    background-image: url('./plan-img/header-Jobs-768.jpg');
+  }
+
+  /* .birds-view .background {
+        background-image: url("./plan-img/nav-bg-768.jpg");
+      } */
+}
+
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .nav-wrap {
+    min-height: 500px;
+  }
+  .header-section-headline {
+    font-size: 3em;
+  }
+  .jobs .background {
+    background-image: url('./plan-img/header-Jobs-992.jpg');
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .jobs .background {
+    background-image: url('./plan-img/header-Jobs-1200.jpg');
+  }
+
+  .birds-view .background {
+    background-image: url('./plan-img/nav-bg-1200.jpg');
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .birds-view .background {
+    background-image: url('./plan-img/nav-bg-1920.jpg');
+  }
+}
+@media only screen and (min-width: 1680px) {
+}
+
+/* @media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... } */

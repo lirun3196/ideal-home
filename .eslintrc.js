@@ -48,10 +48,16 @@ module.exports = {
     /// override default options for rules from base configurations
     strict: "off",
     // semi: ["error", "never"],
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": ["error", {
+      "arrays": "always",
+      "objects": "always",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+  }],
     "no-unused-expressions": ["error", { allowShortCircuit: true, allowTernary: true }],
     "no-param-reassign": ["error", { props: false }],
-    "prefer-const": "off", //["error", {"ignoreReadBeforeAssign": true,"destructuring": "all"}],
+    "prefer-const": ["error", {"ignoreReadBeforeAssign": true,"destructuring": "all"}],
     "consistent-return": 0,
     "eol-last": 0
 

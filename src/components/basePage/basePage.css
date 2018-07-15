@@ -1,4 +1,4 @@
-.base-page{
+.base-page {
   width: 85%;
   margin: 0 auto;
   max-width: 500px;
@@ -6,9 +6,14 @@
 .base-slide {
   margin: 10px 0 20px;
 }
+.base-slide .slick-next:before,
+.base-slide .slick-prev:before {
+  opacity: 0.75;
+  color: #dd7e6b;
+}
 .base-slide img {
   width: 100%;
 }
-.slider-describe{
+.slider-describe {
   margin: 0;
 }

@@ -1,48 +1,34 @@
 import React from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import BasePage from './basePage/basePage';
+import TechEvent from './js/event';
+import TechObject from './js/object';
+import TechFunction from './js/function';
+import Statement from './js/statement-expression';
+import './index.css';
 
 export default class Tech extends React.Component {
-  //http://jaketrent.com/post/addremove-classes-raw-javascript/
-  constructor(props) {
-    super(props);
-    this.state = {
-      navPageClass: 'birds-view',
-      moveUp: false
-    };
-  }
   componentDidMount() {
     // document.body.requestFullscreen()
   }
   render() {
     const match = this.props.match;
-    const toObjFactory = path => {
-      return {
-        pathname: match.url + '/' + path
-      };
-    };
+    // const toObjFactory = path => {
+    //   return {
+    //     pathname: match.url + '/' + path
+    //   };
+    // };
     return (
-      <div className="app">
-        <div className="nav">
+      <div className="tech">
+        {/* <div className="nav">
           <NavLink to={toObjFactory('balcony')}>balcony</NavLink>
-        </div>
-        <div
-          id="content"
-          name="content"
-          ref={content => {
-            this.contentWrap = content;
-          }}
-        >
-          <Route exact path={match.url} component={Balcony} />
-          <Route path={`${match.url}/balcony`} component={Balcony} />
-          <Route path={`${match.url}/livingroom`} component={LivingRoom} />
-          <Route path={`${match.url}/bathroom`} component={Bathroom} />
-          <Route path={`${match.url}/hallway`} component={HallWay} />
-          <Route path={`${match.url}/bedroom`} component={Bedroom} />
-          <Route path={`${match.url}/kitchen`} component={Kitchen} />
-          <Route path={`${match.url}/study`} component={Study} />
-          <Route path={`${match.url}/cloakroom`} component={Cloakroom} />
+        </div> */}
+        <div id="content" name="content">
+          <Route exact path={match.url} component={TechEvent} />
+          <Route path={`${match.url}/event`} component={TechEvent} />
+          <Route path={`${match.url}/object`} component={TechObject} />
+          <Route path={`${match.url}/function`} component={TechFunction} />
+          <Route path={`${match.url}/statement`} component={Statement} />
         </div>
       </div>
     );

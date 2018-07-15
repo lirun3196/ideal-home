@@ -1,0 +1,26 @@
+{
+  "pageTitle": "statement&expression",
+  "keyWords": [
+    { "id": 1, "content": "statement" },
+    { "id": 2, "content": "declarations" }
+  ],
+  "linkListItems": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "content": "MDN document",
+          "link":
+            "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements"
+        },
+        {
+          "id": 2,
+          "content": "ES6 standard",
+          "link":
+            "http://ecma-international.org/ecma-262/#sec-ecmascript-language-statements-and-declarations"
+        }
+      ],
+      "title": "Referrers"
+    }
+  ]
+}
