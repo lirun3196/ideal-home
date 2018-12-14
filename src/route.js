@@ -6,6 +6,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
 import Apartment from './components/apartment';
 import Tech from './components/technology';
+import Ocr from './components/ocr';
 import TestSinglePage from './components/testSth/testSinglePage.js';
 
 // contain all routes into a variable to be imported into index.js
@@ -14,7 +15,8 @@ const routes = (
     {/* If path is / then load the Plan component */}
     <App>
       <Switch>
-        <Route exact path="/" component={Tech} />
+        <Route exact path="/" component={Ocr} />
+        <Route path="/Ocr" component={Ocr} />
         <Route path="/home" component={Apartment} />
         <Route path="/tech" component={Tech} />
         <Route path="/testSinglePage" component={TestSinglePage} />

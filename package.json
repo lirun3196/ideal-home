@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "autotrack": "^2.4.1",
     "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
